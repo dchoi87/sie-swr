@@ -5,15 +5,17 @@
   align-items: center;
   gap: 32px;
 
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 128px 32px;
+  padding: 160px 32px;
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 5px;
 
   background: rgba(255, 255, 255, 0.4);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .title {
@@ -30,6 +32,7 @@
 }
 
 .cta {
+  padding-top: 32px;
   display: flex;
   gap: 64px;
 }

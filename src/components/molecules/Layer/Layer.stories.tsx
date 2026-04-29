@@ -14,7 +14,7 @@ const meta = {
     (Story) => (
       <div
         style={{
-          padding: "10rem",
+          padding: "8rem",
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",

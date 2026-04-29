@@ -16,13 +16,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    label: "Button",
+    label: "Lorem Ipsum",
   },
 };
 
 export const Secondary: Story = {
   args: {
     type: "secondary",
-    label: "Button",
+    label: "Lorem Ipsum",
   },
 };
