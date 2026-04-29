@@ -14,8 +14,8 @@ const Layer = ({ title }: LayerProps) => (
       tempor incididunt ut labore et dolore magna aliqua.
     </div>
     <div className={styles.cta}>
-      <Button label="Button 1" primary={true} />
-      <Button label="Button 2" />
+      <Button label="Button 1" />
+      <Button label="Button 2" type="secondary" />
     </div>
   </div>
 );
