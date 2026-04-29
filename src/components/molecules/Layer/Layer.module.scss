@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 64px;
+  position: relative;
 
   max-width: 800px;
   margin: 0 auto;
@@ -18,21 +19,46 @@
   -webkit-backdrop-filter: blur(6px);
 }
 
-.title {
-  font-family: "PT Sans";
-  font-size: 56px;
-  font-weight: 600;
-  text-transform: capitalize;
+.dots {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  position: absolute;
+  bottom: 48px;
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #eaeaea;
+    border-radius: 50%;
+
+    &:first-child {
+      background-color: #282828;
+    }
+  }
 }
 
-.description {
-  font-size: 16px;
-  max-width: 500px;
-  text-align: center;
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+
+  .title {
+    font-family: "PT Sans";
+    font-size: 56px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .description {
+    font-size: 16px;
+    max-width: 500px;
+    text-align: center;
+  }
 }
 
 .cta {
-  padding-top: 32px;
   display: flex;
   gap: 64px;
 }
