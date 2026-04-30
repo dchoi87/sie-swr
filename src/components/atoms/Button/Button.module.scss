@@ -1,4 +1,7 @@
 .button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: "Open Sans";
   font-size: 16px;
   font-weight: 500;
@@ -8,6 +11,12 @@
   border: none;
   border-radius: 8px;
   padding: 16px 32px;
+
+  &.left {
+    span {
+      order: 1;
+    }
+  }
 }
 
 .primary {
