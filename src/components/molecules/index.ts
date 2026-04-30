@@ -1,1 +1,1 @@
-export { default as Layer } from "./Layer";
+export { default as Dialogue } from "./Dialogue";

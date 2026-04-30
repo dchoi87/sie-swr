@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import image from "@/assets/waiting-room.png";
 
-import Layer from "./Layer";
+import Dialogue from "./Dialogue";
 
 const meta = {
-  title: "Molecules/Layer",
-  component: Layer,
+  title: "Molecules/Dialogue",
+  component: Dialogue,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -24,7 +24,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Layer>;
+} satisfies Meta<typeof Dialogue>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

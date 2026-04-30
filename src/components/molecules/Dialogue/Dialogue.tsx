@@ -1,12 +1,12 @@
 import { Button } from "@/components/atoms";
 
-import styles from "./Layer.module.scss";
+import styles from "./Dialogue.module.scss";
 
-export interface LayerProps {
+export interface DialogueProps {
   title?: string;
 }
 
-const Layer = ({ title }: LayerProps) => (
+const Dialogue = ({ title }: DialogueProps) => (
   <div className={styles.container}>
     <div className={styles.copy}>
       <div className={styles.title}>{title}</div>
@@ -27,4 +27,4 @@ const Layer = ({ title }: LayerProps) => (
   </div>
 );
 
-export default Layer;
+export default Dialogue;
