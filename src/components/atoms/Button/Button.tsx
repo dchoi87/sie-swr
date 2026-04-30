@@ -5,12 +5,12 @@ import { Icon } from "@/components/atoms";
 
 import styles from "./Button.module.scss";
 
-const BUTTON_TYPES = ["primary", "secondary"] as const;
+export const BUTTON_TYPES = ["primary", "secondary"] as const;
 
 type ButtonType = (typeof BUTTON_TYPES)[number];
 export interface ButtonProps {
   type?: ButtonType;
-  label: string;
+  label?: string;
   iconName?: keyof typeof icons;
   iconPos?: "left" | "right";
 }
@@ -25,10 +25,15 @@ const Button = ({
   return (
     <button
       type="button"
-      className={classNames(styles.button, styles[type], styles[iconPos])}
+      className={classNames(
+        styles.button,
+        styles[type],
+        styles[iconPos],
+        !label && styles.icon,
+      )}
       {...props}
     >
-      <span>{label}</span>
+      {label && <span>{label}</span>}
       {iconName && <Icon iconName={iconName} size="24" />}
     </button>
   );

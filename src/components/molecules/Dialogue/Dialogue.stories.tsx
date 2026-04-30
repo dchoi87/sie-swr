@@ -10,6 +10,15 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
+  argTypes: {
+    chevron: {
+      control: "boolean",
+    },
+    chevronPos: {
+      control: "select",
+      options: ["inner", "outer"],
+    },
+  },
   decorators: [
     (Story) => (
       <div
@@ -31,9 +40,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: "Welcome",
+    title: "Lorem Ipsum",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     dots: 5,
+  },
+};
+
+export const Chevron: Story = {
+  args: {
+    ...Default.args,
+    chevron: true,
   },
 };

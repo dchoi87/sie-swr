@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import * as icons from "react-bootstrap-icons";
 
-import Button from "./Button";
+import Button, { BUTTON_TYPES } from "./Button";
 
 const meta = {
   title: "Atoms/Button",
@@ -9,6 +10,16 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs"],
+  argTypes: {
+    iconName: {
+      control: "select",
+      options: Object.keys(icons),
+    },
+    type: {
+      control: "select",
+      options: BUTTON_TYPES,
+    },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -18,6 +29,8 @@ export const Primary: Story = {
   args: {
     label: "Lorem Ipsum",
     iconName: "ArrowRight",
+    iconPos: "right",
+    type: "primary",
   },
 };
 
@@ -25,5 +38,12 @@ export const Secondary: Story = {
   args: {
     ...Primary.args,
     type: "secondary",
+  },
+};
+
+export const Icon: Story = {
+  args: {
+    type: "primary",
+    iconName: "ChevronRight",
   },
 };
