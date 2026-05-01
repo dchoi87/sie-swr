@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import image from "@/assets/waiting-room.png";
 
 import Dialogue from "./Dialogue";
-import { Button } from "@/components/atoms";
 
 const meta = {
   title: "Molecules/Dialogue",
@@ -11,12 +10,7 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
-  argTypes: {
-    navPos: {
-      control: "select",
-      options: ["inner", "outer"],
-    },
-  },
+  argTypes: {},
   decorators: [
     (Story) => (
       <div
@@ -36,56 +30,34 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Cta: Story = {
+export const Default: Story = {
   args: {
     title: "Lorem Ipsum",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    dots: 5,
   },
 };
 
 export const Contrast: Story = {
   args: {
-    ...Cta.args,
+    ...Default.args,
     contrast: true,
   },
 };
 
-export const Chevrons: Story = {
+export const Navigation: Story = {
   args: {
-    ...Cta.args,
-    navContent: (
-      <>
-        <Button iconName="ChevronLeft" />
-        <Button iconName="ChevronRight" />
-      </>
-    ),
+    ...Contrast.args,
+    contrast: true,
+    navigation: true,
   },
 };
 
 export const Confirmation: Story = {
   args: {
-    ...Cta.args,
-    navContent: (
-      <>
-        <Button
-          iconName="XLg"
-          type="secondary"
-          style={{
-            color: "rgba(108, 1, 5, 0.8)",
-            borderColor: "rgba(108, 1, 5, 0.8)",
-          }}
-        />
-        <Button
-          iconName="CheckLg"
-          type="secondary"
-          style={{
-            color: "rgba(6, 127, 38, 0.8)",
-            borderColor: "rgba(6, 127, 38, 0.8)",
-          }}
-        />
-      </>
-    ),
+    ...Contrast.args,
+    contrast: true,
+    navigation: true,
+    navigationType: "confirm",
   },
 };

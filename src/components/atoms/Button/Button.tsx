@@ -8,16 +8,21 @@ import styles from "./Button.module.scss";
 export const BUTTON_TYPES = ["primary", "secondary", "contrast"] as const;
 
 type ButtonType = (typeof BUTTON_TYPES)[number];
+
+export const BUTTON_VARIANT = ["", "green", "red", "yellow"] as const;
+
+type ButtonVariantType = (typeof BUTTON_VARIANT)[number];
 export interface ButtonProps {
   type?: ButtonType;
+  variant?: ButtonVariantType;
   label?: string;
   iconName?: keyof typeof icons;
   iconPos?: "left" | "right";
-  style?: React.CSSProperties;
 }
 
 const Button = ({
   type = "primary",
+  variant = "",
   label,
   iconName,
   iconPos = "right",
@@ -29,6 +34,7 @@ const Button = ({
       className={classNames(
         styles.button,
         styles[type],
+        styles[variant],
         styles[iconPos],
         !label && styles.icon,
       )}

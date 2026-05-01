@@ -1,34 +1,32 @@
 import classNames from "classnames";
 
 import { Button } from "@/components/atoms";
-
+import { Navigation } from "@/components/molecules";
+import type { NavigationType } from "@/components/molecules/Navigation/Navigation";
 import styles from "./Dialogue.module.scss";
 
 export interface DialogueProps {
   title?: string;
   description?: string;
-  dots?: number;
-  navPos?: string;
-  navContent?: React.ReactNode;
   contrast?: boolean;
+  navigation?: boolean;
+  navigationType?: NavigationType;
 }
 
 const Dialogue = ({
   title,
   description,
-  dots,
-  navPos = "inner",
-  navContent,
   contrast,
+  navigation = false,
+  navigationType,
 }: DialogueProps) => (
   <div className={classNames(styles.container, contrast && styles.contrast)}>
     <div className={styles.copy}>
       {title && <div className={styles.title}>{title}</div>}
       {description && <div className={styles.description}>{description}</div>}
     </div>
-
-    {navContent ? (
-      <div className={classNames(styles.nav, styles[navPos])}>{navContent}</div>
+    {navigation ? (
+      <Navigation contrast={contrast} type={navigationType} />
     ) : (
       <div className={styles.cta}>
         <Button
@@ -36,13 +34,6 @@ const Dialogue = ({
           iconName="ArrowRight"
           type={contrast ? "contrast" : "primary"}
         />
-      </div>
-    )}
-    {dots && (
-      <div className={styles.dots}>
-        {[...Array(dots)].map((_el, i) => {
-          return <div key={`dot-${i}`} className={styles.dot}></div>;
-        })}
       </div>
     )}
   </div>
