@@ -13,6 +13,7 @@ export interface ButtonProps {
   label?: string;
   iconName?: keyof typeof icons;
   iconPos?: "left" | "right";
+  style?: React.CSSProperties;
 }
 
 const Button = ({

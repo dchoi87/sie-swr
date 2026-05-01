@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import image from "@/assets/waiting-room.png";
 
 import Dialogue from "./Dialogue";
+import { Button } from "@/components/atoms";
 
 const meta = {
   title: "Molecules/Dialogue",
@@ -11,10 +12,7 @@ const meta = {
     layout: "fullscreen",
   },
   argTypes: {
-    chevron: {
-      control: "boolean",
-    },
-    chevronPos: {
+    navPos: {
       control: "select",
       options: ["inner", "outer"],
     },
@@ -38,7 +36,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Cta: Story = {
   args: {
     title: "Lorem Ipsum",
     description:
@@ -47,9 +45,29 @@ export const Default: Story = {
   },
 };
 
-export const Chevron: Story = {
+export const Chevrons: Story = {
   args: {
-    ...Default.args,
-    chevron: true,
+    ...Cta.args,
+    navContent: (
+      <>
+        <Button iconName="ChevronLeft" />
+        <Button iconName="ChevronRight" />
+      </>
+    ),
+  },
+};
+
+export const Confirmation: Story = {
+  args: {
+    ...Cta.args,
+    navContent: (
+      <>
+        <Button iconName="XLg" style={{ background: "rgba(108, 1, 5, 0.8)" }} />
+        <Button
+          iconName="CheckLg"
+          style={{ background: "rgba(6, 127, 38, 0.8)" }}
+        />
+      </>
+    ),
   },
 };

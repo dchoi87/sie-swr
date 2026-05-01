@@ -8,16 +8,16 @@ export interface DialogueProps {
   title?: string;
   description?: string;
   dots?: number;
-  chevron?: boolean;
-  chevronPos?: string;
+  navPos?: string;
+  navContent?: React.ReactNode;
 }
 
 const Dialogue = ({
   title,
   description,
   dots,
-  chevron = false,
-  chevronPos = "inner",
+  navPos = "inner",
+  navContent,
 }: DialogueProps) => (
   <div className={styles.container}>
     <div className={styles.copy}>
@@ -25,11 +25,8 @@ const Dialogue = ({
       {description && <div className={styles.description}>{description}</div>}
     </div>
 
-    {chevron ? (
-      <div className={classNames(styles.chevron, styles[chevronPos])}>
-        <Button iconName="ChevronLeft" />
-        <Button iconName="ChevronRight" />
-      </div>
+    {navContent ? (
+      <div className={classNames(styles.nav, styles[navPos])}>{navContent}</div>
     ) : (
       <div className={styles.cta}>
         <Button label="Lorem Ipsum" iconName="ArrowRight" />
@@ -46,3 +43,7 @@ const Dialogue = ({
 );
 
 export default Dialogue;
+
+// TODO:
+// 1. Navigation Buttons - Chevrons & YES/NO
+// 2. Darker Glass and Contrast Version
