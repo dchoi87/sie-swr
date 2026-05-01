@@ -11,8 +11,6 @@
   border: none;
   border-radius: 32px;
   padding: 16px 32px;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
 
   &.icon {
     display: flex;
@@ -35,6 +33,8 @@
 .primary {
   color: #fff;
   background: rgba(21, 21, 21, 0.8);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 .secondary {
@@ -44,4 +44,6 @@
 .contrast {
   color: #fff;
   background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
