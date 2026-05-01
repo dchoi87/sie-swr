@@ -10,6 +10,7 @@ export interface DialogueProps {
   dots?: number;
   navPos?: string;
   navContent?: React.ReactNode;
+  contrast?: boolean;
 }
 
 const Dialogue = ({
@@ -18,8 +19,9 @@ const Dialogue = ({
   dots,
   navPos = "inner",
   navContent,
+  contrast,
 }: DialogueProps) => (
-  <div className={styles.container}>
+  <div className={classNames(styles.container, contrast && styles.contrast)}>
     <div className={styles.copy}>
       {title && <div className={styles.title}>{title}</div>}
       {description && <div className={styles.description}>{description}</div>}
@@ -29,7 +31,11 @@ const Dialogue = ({
       <div className={classNames(styles.nav, styles[navPos])}>{navContent}</div>
     ) : (
       <div className={styles.cta}>
-        <Button label="Lorem Ipsum" iconName="ArrowRight" />
+        <Button
+          label="Lorem Ipsum"
+          iconName="ArrowRight"
+          type={contrast ? "contrast" : "primary"}
+        />
       </div>
     )}
     {dots && (
@@ -43,7 +49,3 @@ const Dialogue = ({
 );
 
 export default Dialogue;
-
-// TODO:
-// 1. Navigation Buttons - Chevrons & YES/NO
-// 2. Darker Glass and Contrast Version

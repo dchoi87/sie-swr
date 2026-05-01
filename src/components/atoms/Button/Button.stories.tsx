@@ -34,6 +34,16 @@ export const Primary: Story = {
   },
 };
 
+export const Contrast: Story = {
+  args: {
+    ...Primary.args,
+    type: "contrast",
+  },
+  globals: {
+    backgrounds: { value: "dark" },
+  },
+};
+
 export const Secondary: Story = {
   args: {
     ...Primary.args,

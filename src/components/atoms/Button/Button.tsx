@@ -5,7 +5,7 @@ import { Icon } from "@/components/atoms";
 
 import styles from "./Button.module.scss";
 
-export const BUTTON_TYPES = ["primary", "secondary"] as const;
+export const BUTTON_TYPES = ["primary", "secondary", "contrast"] as const;
 
 type ButtonType = (typeof BUTTON_TYPES)[number];
 export interface ButtonProps {

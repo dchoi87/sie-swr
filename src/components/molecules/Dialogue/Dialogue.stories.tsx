@@ -45,6 +45,13 @@ export const Cta: Story = {
   },
 };
 
+export const Contrast: Story = {
+  args: {
+    ...Cta.args,
+    contrast: true,
+  },
+};
+
 export const Chevrons: Story = {
   args: {
     ...Cta.args,
@@ -62,10 +69,21 @@ export const Confirmation: Story = {
     ...Cta.args,
     navContent: (
       <>
-        <Button iconName="XLg" style={{ background: "rgba(108, 1, 5, 0.8)" }} />
+        <Button
+          iconName="XLg"
+          type="secondary"
+          style={{
+            color: "rgba(108, 1, 5, 0.8)",
+            borderColor: "rgba(108, 1, 5, 0.8)",
+          }}
+        />
         <Button
           iconName="CheckLg"
-          style={{ background: "rgba(6, 127, 38, 0.8)" }}
+          type="secondary"
+          style={{
+            color: "rgba(6, 127, 38, 0.8)",
+            borderColor: "rgba(6, 127, 38, 0.8)",
+          }}
         />
       </>
     ),

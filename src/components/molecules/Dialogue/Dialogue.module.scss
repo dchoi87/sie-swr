@@ -1,14 +1,15 @@
 .container {
   font-family: "Open Sans";
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 64px;
-  position: relative;
 
   max-width: 800px;
+  height: 590px;
   margin: 0 auto;
-  padding: 160px 32px;
   outline: 2px solid rgba(255, 255, 255, 0.4);
   outline-offset: 5px;
 
@@ -17,6 +18,15 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+
+  &.contrast {
+    background: rgba(60, 60, 60, 0.45);
+    outline-color: rgba(60, 60, 60, 0.45);
+
+    .copy {
+      color: #fff;
+    }
+  }
 }
 
 .copy {
