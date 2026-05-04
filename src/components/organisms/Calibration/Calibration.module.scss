@@ -1,0 +1,74 @@
+.calibrationButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 190px;
+  height: 56px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: black;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    background: red;
+    animation: turnGreen 1ms linear 1900ms forwards;
+
+    .ringPath {
+      animation: drawRing 1500ms linear 400ms forwards;
+    }
+  }
+}
+
+.label {
+  position: relative;
+  z-index: 2;
+}
+
+.ring {
+  position: absolute;
+  inset: -5px;
+
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+
+  overflow: visible;
+  pointer-events: none;
+}
+
+.ringPath {
+  fill: none;
+  stroke: blue;
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+
+  opacity: 0;
+}
+
+@keyframes drawRing {
+  from {
+    opacity: 1;
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes turnGreen {
+  to {
+    background: green;
+  }
+}

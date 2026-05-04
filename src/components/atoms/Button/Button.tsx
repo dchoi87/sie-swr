@@ -17,7 +17,8 @@ export interface ButtonProps {
   variant?: ButtonVariantType;
   label?: string;
   iconName?: keyof typeof icons;
-  iconPos?: "left" | "right";
+  iconPos?: "start" | "end";
+  alignment?: "left" | "center";
 }
 
 const Button = ({
@@ -25,7 +26,8 @@ const Button = ({
   variant = "",
   label,
   iconName,
-  iconPos = "right",
+  iconPos = "end",
+  alignment = "left",
   ...props
 }: ButtonProps) => {
   return (
@@ -36,6 +38,7 @@ const Button = ({
         styles[type],
         styles[variant],
         styles[iconPos],
+        styles[alignment],
         !label && styles.icon,
       )}
       {...props}

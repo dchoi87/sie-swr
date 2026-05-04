@@ -1,6 +1,6 @@
 import styles from "./Selection.module.scss";
 
-import { Icon } from "@/components/atoms";
+import { Icon, Button } from "@/components/atoms";
 
 export interface SelectionProps {
   title?: string;
@@ -24,8 +24,14 @@ const Selection = ({ title, description }: SelectionProps) => {
               </div>
               <div className={styles.description}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                eiusmod tempor.
               </div>
+              <Button
+                label="Lorem Ipsum"
+                iconName="ArrowRight"
+                type="contrast"
+                alignment="center"
+              />
             </div>
           );
         })}

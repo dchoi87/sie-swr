@@ -23,10 +23,14 @@
     }
   }
 
-  &.left {
+  &.start {
     span {
       order: 1;
     }
+  }
+
+  &.center {
+    justify-content: center;
   }
 }
 

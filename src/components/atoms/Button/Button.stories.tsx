@@ -29,7 +29,7 @@ export const Primary: Story = {
   args: {
     label: "Lorem Ipsum",
     iconName: "ArrowRight",
-    iconPos: "right",
+    iconPos: "end",
     type: "primary",
   },
 };
