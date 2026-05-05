@@ -1,0 +1,60 @@
+.dot {
+  --ring-offset: 8px;
+  --ring-width: 3px;
+
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 999px;
+  background: #a9a9a9;
+  cursor: pointer;
+
+  transition: background-color 200ms ease;
+
+  &:hover {
+    background: #dcdcdc;
+    animation: complete 1ms linear 2200ms forwards;
+
+    .ringPath {
+      animation: ring 1500ms linear 700ms forwards;
+    }
+  }
+}
+
+.ring {
+  position: absolute;
+  inset: calc(-1 * var(--ring-offset));
+  width: calc(100% + var(--ring-offset) * 2);
+  height: calc(100% + var(--ring-offset) * 2);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.ringPath {
+  fill: none;
+  stroke: #c7c7c7;
+  stroke-width: var(--ring-width);
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+}
+
+@keyframes ring {
+  from {
+    opacity: 1;
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes complete {
+  to {
+    background: #c7c7c7;
+  }
+}

@@ -1,55 +1,65 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useState, useRef, useEffect } from "react";
+
+import { Dot } from "@/components/atoms";
+
 import styles from "./Calibration.module.scss";
 
-const RING_OFFSET = 5;
-const RING_WIDTH = 3;
+const Calibration = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<number | null>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
-export default function Calibration() {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const [path, setPath] = useState("");
+  const moveDot = () => {
+    if (!containerRef.current) return;
 
-  useLayoutEffect(() => {
-    const button = buttonRef.current;
-    if (!button) return;
+    const container = containerRef.current;
+    const rect = container.getBoundingClientRect();
+    const dotSize = 30;
+    const maxX = rect.width - dotSize;
+    const maxY = rect.height - dotSize;
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
 
-    const updatePath = () => {
-      const width = button.offsetWidth + RING_OFFSET * 2;
-      const height = button.offsetHeight + RING_OFFSET * 2;
+    setPosition({ x: randomX, y: randomY });
+  };
 
-      const strokeInset = RING_WIDTH / 2;
-      const radius = height / 2 - strokeInset;
+  const handleHover = () => {
+    timeoutRef.current = window.setTimeout(() => {
+      moveDot();
+    }, 2200);
+  };
 
-      const left = strokeInset;
-      const right = width - strokeInset;
-      const top = strokeInset;
-      const bottom = height - strokeInset;
-      const centerX = width / 2;
+  const handleLeave = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
 
-      setPath(`
-        M ${centerX} ${top}
-        H ${right - radius}
-        A ${radius} ${radius} 0 0 1 ${right - radius} ${bottom}
-        H ${left + radius}
-        A ${radius} ${radius} 0 0 1 ${left + radius} ${top}
-        H ${centerX}
-      `);
-    };
-
-    updatePath();
-
-    const observer = new ResizeObserver(updatePath);
-    observer.observe(button);
-
-    return () => observer.disconnect();
+  useEffect(() => {
+    // initial center position
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      setPosition({
+        x: rect.width / 2,
+        y: rect.height / 2,
+      });
+    }
   }, []);
 
   return (
-    <button ref={buttonRef} className={styles.calibrationButton} type="button">
-      <span className={styles.label}>Calibration</span>
-
-      <svg className={styles.ring} aria-hidden="true">
-        <path className={styles.ringPath} d={path} pathLength="1" />
-      </svg>
-    </button>
+    <div ref={containerRef} className={styles.container}>
+      <div
+        className={styles.dot}
+        onMouseEnter={handleHover}
+        onMouseLeave={handleLeave}
+        style={{
+          transform: `translate(${position.x}px, ${position.y}px)`,
+        }}
+      >
+        <Dot />
+      </div>
+    </div>
   );
-}
+};
+
+export default Calibration;

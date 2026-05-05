@@ -1,81 +1,12 @@
-.calibrationButton {
-  --ring-offset: 5px;
-  --ring-width: 3px;
-
+.container {
   position: relative;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 190px;
-  height: 56px;
-  padding: 0 32px;
-
-  border: 0;
-  border-radius: 999px;
-
-  background: black;
-  color: white;
-
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-
-  transition: background-color 200ms ease;
-
-  &:hover {
-    background: red;
-    animation: turnGreen 1ms linear 2200ms forwards;
-
-    .ringPath {
-      animation: drawRing 1500ms linear 700ms forwards;
-    }
-  }
+  width: 100vw;
+  height: 100vh;
+  background: #2a2a2a;
 }
 
-.label {
-  position: relative;
-  z-index: 2;
-}
-
-.ring {
+.dot {
   position: absolute;
-  inset: calc(-1 * var(--ring-offset));
-
-  width: calc(100% + var(--ring-offset) * 2);
-  height: calc(100% + var(--ring-offset) * 2);
-
-  overflow: visible;
-  pointer-events: none;
-}
-
-.ringPath {
-  fill: none;
-  stroke: blue;
-  stroke-width: var(--ring-width);
-  stroke-linecap: round;
-
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-
-  opacity: 0;
-}
-
-@keyframes drawRing {
-  from {
-    opacity: 1;
-    stroke-dashoffset: 1;
-  }
-
-  to {
-    opacity: 1;
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes turnGreen {
-  to {
-    background: green;
-  }
+  border-radius: 50%;
+  transition: transform 1.3s ease;
 }
