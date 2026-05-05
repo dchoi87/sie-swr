@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import classNames from "classnames";
 
 import { Dot } from "@/components/atoms";
 
@@ -8,6 +9,7 @@ const Calibration = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [directions, setDirections] = useState(true);
 
   const moveDot = () => {
     if (!containerRef.current) return;
@@ -25,6 +27,9 @@ const Calibration = () => {
 
   const handleHover = () => {
     timeoutRef.current = window.setTimeout(() => {
+      if (directions) {
+        setDirections(false);
+      }
       moveDot();
     }, 2200);
   };
@@ -48,6 +53,12 @@ const Calibration = () => {
 
   return (
     <div ref={containerRef} className={styles.container}>
+      <div
+        className={classNames(styles.directions, !directions && styles.hidden)}
+      >
+        Please look directly at the <span>dot</span> and keep your{" "}
+        <span>gaze steady</span> until it changes.
+      </div>
       <div
         className={styles.dot}
         onMouseEnter={handleHover}
