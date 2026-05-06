@@ -56,8 +56,8 @@ const Calibration = () => {
       <div
         className={classNames(styles.directions, !directions && styles.hidden)}
       >
-        Please look directly at the <span>dot</span> and keep your{" "}
-        <span>gaze steady</span> until it changes.
+        Please look directly at the <span>dot</span> and keep your
+        <span> gaze steady</span> until it changes
       </div>
       <div
         className={styles.dot}
