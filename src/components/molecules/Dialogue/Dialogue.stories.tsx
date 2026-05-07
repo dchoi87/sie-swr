@@ -6,7 +6,7 @@ import Dialogue from "./Dialogue";
 const meta = {
   title: "Molecules/Dialogue",
   component: Dialogue,
-  tags: ["autodocs"],
+  tags: ["autodocs", "version:1.0.0"],
   parameters: {
     layout: "fullscreen",
   },
@@ -38,25 +38,16 @@ export const Default: Story = {
   },
 };
 
-export const Contrast: Story = {
-  args: {
-    ...Default.args,
-    contrast: true,
-  },
-};
-
 export const Navigation: Story = {
   args: {
-    ...Contrast.args,
-    contrast: true,
+    ...Default.args,
     navigation: true,
   },
 };
 
 export const Confirmation: Story = {
   args: {
-    ...Contrast.args,
-    contrast: true,
+    ...Default.args,
     navigation: true,
     navigationType: "confirm",
   },

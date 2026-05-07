@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import * as icons from "react-bootstrap-icons";
 
-import Button, { BUTTON_TYPES } from "./Button";
+import Button from "./Button";
 
 const meta = {
   title: "Atoms/Button",
@@ -15,45 +15,48 @@ const meta = {
       control: "select",
       options: Object.keys(icons),
     },
-    type: {
-      control: "select",
-      options: BUTTON_TYPES,
-    },
   },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
     label: "Lorem Ipsum",
     iconName: "ArrowRight",
     iconPos: "end",
-    type: "primary",
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    ...Primary.args,
-    type: "secondary",
-  },
-};
-
-export const Contrast: Story = {
-  args: {
-    ...Primary.args,
-    type: "contrast",
   },
   globals: {
     backgrounds: { value: "dark" },
   },
 };
 
-export const Icon: Story = {
+export const Chevron: Story = {
   args: {
-    type: "primary",
     iconName: "ChevronRight",
+  },
+  globals: {
+    backgrounds: { value: "dark" },
+  },
+};
+
+export const Yes: Story = {
+  args: {
+    iconName: "CheckLg",
+    theme: "green",
+  },
+  globals: {
+    backgrounds: { value: "dark" },
+  },
+};
+
+export const No: Story = {
+  args: {
+    iconName: "XLg",
+    theme: "red",
+  },
+  globals: {
+    backgrounds: { value: "dark" },
   },
 };

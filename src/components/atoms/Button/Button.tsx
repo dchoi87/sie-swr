@@ -6,16 +6,11 @@ import { Icon } from "@/components/atoms";
 
 import styles from "./Button.module.scss";
 
-export const BUTTON_TYPES = ["primary", "secondary", "contrast"] as const;
+export const BUTTON_THEME = ["neutral", "green", "red", "yellow"] as const;
 
-type ButtonType = (typeof BUTTON_TYPES)[number];
-
-export const BUTTON_VARIANT = ["", "green", "red", "yellow"] as const;
-
-type ButtonVariantType = (typeof BUTTON_VARIANT)[number];
+type ButtonTheme = (typeof BUTTON_THEME)[number];
 export interface ButtonProps {
-  type?: ButtonType;
-  variant?: ButtonVariantType;
+  theme?: ButtonTheme;
   label?: string;
   iconName?: keyof typeof icons;
   iconPos?: "start" | "end";
@@ -26,8 +21,7 @@ const RING_OFFSET = 7;
 const RING_WIDTH = 3;
 
 const Button = ({
-  type = "primary",
-  variant = "",
+  theme = "neutral",
   label,
   iconName,
   iconPos = "end",
@@ -44,10 +38,8 @@ const Button = ({
     const updatePath = () => {
       const width = button.offsetWidth + RING_OFFSET * 2;
       const height = button.offsetHeight + RING_OFFSET * 2;
-
       const strokeInset = RING_WIDTH / 2;
       const radius = height / 2 - strokeInset;
-
       const left = strokeInset;
       const right = width - strokeInset;
       const top = strokeInset;
@@ -78,8 +70,7 @@ const Button = ({
       type="button"
       className={classNames(
         styles.button,
-        styles[type],
-        styles[variant],
+        styles[theme],
         styles[iconPos],
         styles[alignment],
         !label && styles.icon,

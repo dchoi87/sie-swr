@@ -45,23 +45,16 @@ export const Default: Story = {
   },
 };
 
-export const Contrast: Story = {
-  args: {
-    ...Default.args,
-    contrast: true,
-  },
-};
-
 export const ConfirmationIcon: Story = {
   args: {
-    ...Contrast.args,
+    ...Default.args,
     type: "confirm",
   },
 };
 
 export const ConfirmationText: Story = {
   args: {
-    ...Contrast.args,
+    ...Default.args,
     type: "text",
   },
 };

@@ -29,7 +29,6 @@ const Selection = ({ title, description }: SelectionProps) => {
               <Button
                 label="Lorem Ipsum"
                 iconName="ArrowRight"
-                type="contrast"
                 alignment="center"
               />
             </div>

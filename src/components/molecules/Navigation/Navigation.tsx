@@ -9,19 +9,14 @@ export const NAVIGATION_TYPES = ["chevron", "confirm", "text"] as const;
 export type NavigationType = (typeof NAVIGATION_TYPES)[number];
 
 export interface NavigationProps {
-  contrast?: boolean;
   type?: NavigationType;
   dots?: number;
 }
 
-const Navigation = ({
-  contrast,
-  type = "chevron",
-  dots = 5,
-}: NavigationProps) => (
+const Navigation = ({ type = "chevron", dots = 5 }: NavigationProps) => (
   <div className={classNames(styles.container)}>
     <div className={classNames(styles.navigation)}>
-      <NavButtons type={type} contrast={contrast} />
+      <NavButtons type={type} />
     </div>
     <div className={styles.dots}>
       {[...Array(dots)].map((_el, i) => {
@@ -31,57 +26,27 @@ const Navigation = ({
   </div>
 );
 
-const NavButtons = ({
-  type,
-  contrast,
-}: {
-  type: NavigationType;
-  contrast?: boolean;
-}) => {
+const NavButtons = ({ type }: { type: NavigationType; contrast?: boolean }) => {
   switch (type) {
     case "chevron":
       return (
         <>
-          <Button
-            iconName="ChevronLeft"
-            type={contrast ? "contrast" : "primary"}
-          />
-          <Button
-            iconName="ChevronRight"
-            type={contrast ? "contrast" : "primary"}
-          />
+          <Button iconName="ChevronLeft" />
+          <Button iconName="ChevronRight" />
         </>
       );
     case "confirm":
       return (
         <>
-          <Button
-            iconName="XLg"
-            type={contrast ? "contrast" : "primary"}
-            variant="red"
-          />
-          <Button
-            iconName="CheckLg"
-            type={contrast ? "contrast" : "primary"}
-            variant="green"
-          />
+          <Button iconName="XLg" theme="red" />
+          <Button iconName="CheckLg" theme="green" />
         </>
       );
     case "text":
       return (
         <>
-          <Button
-            label="No"
-            iconName="XLg"
-            type={contrast ? "contrast" : "primary"}
-            variant="red"
-          />
-          <Button
-            label="Yes"
-            iconName="CheckLg"
-            type={contrast ? "contrast" : "primary"}
-            variant="green"
-          />
+          <Button label="No" iconName="XLg" theme="red" />
+          <Button label="Yes" iconName="CheckLg" theme="green" />
         </>
       );
     default:

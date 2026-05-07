@@ -28,18 +28,8 @@ const Help = ({}: HelpProps) => (
           <li>Laboris nisi ut aliquip ex ea commodo consequat</li>
         </ol>
       </div>
-      <Button
-        label="Skip Module"
-        type="contrast"
-        variant="green"
-        iconName="SkipEnd"
-      />
-      <Button
-        label="Restart Module"
-        type="contrast"
-        variant="red"
-        iconName="Power"
-      />
+      <Button label="Skip Module" theme="green" iconName="SkipEnd" />
+      <Button label="Restart Module" theme="red" iconName="Power" />
     </div>
   </div>
 );
