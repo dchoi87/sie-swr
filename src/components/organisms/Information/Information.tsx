@@ -1,4 +1,5 @@
 import { useState } from "react";
+import classNames from "classnames";
 
 import { Dialogue, Help } from "@/components/molecules";
 
@@ -7,7 +8,7 @@ import styles from "./Information.module.scss";
 export interface InformationProps {}
 
 const Information = ({}: InformationProps) => {
-  const [showHelp, setShowHelp] = useState(false);
+  const [help, setHelp] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -17,7 +18,11 @@ const Information = ({}: InformationProps) => {
         navigation="chevron"
         help={true}
       />
-      <Help />
+      {help && (
+        <div className={classNames(styles.help)}>
+          <Help />
+        </div>
+      )}
     </div>
   );
 };

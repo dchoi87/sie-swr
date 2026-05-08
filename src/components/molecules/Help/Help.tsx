@@ -1,7 +1,7 @@
 import { Dialogue } from "@/components/molecules";
 import { Button, Icon } from "@/components/atoms";
 
-import video from "@/assets/animation.mp4";
+import video from "@/assets/calibration.mp4";
 
 import styles from "./Help.module.scss";
 
@@ -13,7 +13,7 @@ const Help = ({}: HelpProps) => (
       <div className={styles.copy}>
         <div className={styles.title}>
           <Icon iconName="QuestionCircleFill" />
-          <span>Visual Acuity Help</span>
+          <span>Calibration Help</span>
         </div>
         <video className={styles.video} autoPlay muted loop playsInline>
           <source src={video} type="video/mp4" />
