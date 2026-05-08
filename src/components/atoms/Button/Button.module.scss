@@ -76,7 +76,13 @@
   }
 
   &.yellow {
-    background: rgba(255, 255, 255, 0.3);
+    --complete-bg-color: rgba(172, 140, 0, 0.8);
+    background: rgba(255, 208, 0, 0.3);
+
+    &:hover {
+      background: rgba(255, 208, 0, 0.5);
+      animation: complete 1ms linear 2200ms forwards;
+    }
   }
 }
 

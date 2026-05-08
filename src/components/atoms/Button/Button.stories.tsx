@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import * as icons from "react-bootstrap-icons";
 
-import Button from "./Button";
+import Button, { BUTTON_THEME } from "./Button";
 
 const meta = {
   title: "Atoms/Button",
@@ -15,6 +15,10 @@ const meta = {
       control: "select",
       options: Object.keys(icons),
     },
+    theme: {
+      control: "select",
+      options: BUTTON_THEME,
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -26,6 +30,7 @@ export const Default: Story = {
     label: "Lorem Ipsum",
     iconName: "ArrowRight",
     iconPos: "end",
+    theme: "neutral",
   },
   globals: {
     backgrounds: { value: "dark" },
@@ -55,6 +60,16 @@ export const No: Story = {
   args: {
     iconName: "XLg",
     theme: "red",
+  },
+  globals: {
+    backgrounds: { value: "dark" },
+  },
+};
+
+export const Help: Story = {
+  args: {
+    iconName: "InfoLg",
+    theme: "yellow",
   },
   globals: {
     backgrounds: { value: "dark" },

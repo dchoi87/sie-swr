@@ -6,7 +6,7 @@ import Dialogue from "./Dialogue";
 const meta = {
   title: "Molecules/Dialogue",
   component: Dialogue,
-  tags: ["autodocs", "version:1.0.0"],
+  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },
@@ -15,6 +15,8 @@ const meta = {
     (Story) => (
       <div
         style={{
+          display: "flex",
+          justifyContent: "center",
           padding: "8rem",
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
@@ -35,20 +37,21 @@ export const Default: Story = {
     title: "Lorem Ipsum",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    cta: true,
   },
 };
 
 export const Navigation: Story = {
   args: {
     ...Default.args,
-    navigation: true,
+    navigation: "chevron",
+    cta: false,
   },
 };
 
 export const Confirmation: Story = {
   args: {
-    ...Default.args,
-    navigation: true,
-    navigationType: "confirm",
+    ...Navigation.args,
+    navigation: "confirmation",
   },
 };
