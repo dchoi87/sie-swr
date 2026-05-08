@@ -15,6 +15,8 @@ export interface ButtonProps {
   iconName?: keyof typeof icons;
   iconPos?: "start" | "end";
   alignment?: "left" | "center";
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 const RING_OFFSET = 7;
@@ -26,6 +28,8 @@ const Button = ({
   iconName,
   iconPos = "end",
   alignment = "left",
+  onMouseEnter,
+  onMouseLeave,
   ...props
 }: ButtonProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -75,6 +79,8 @@ const Button = ({
         styles[alignment],
         !label && styles.icon,
       )}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       {...props}
     >
       {label && <span>{label}</span>}

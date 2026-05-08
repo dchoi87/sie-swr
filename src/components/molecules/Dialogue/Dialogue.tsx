@@ -8,6 +8,8 @@ export interface DialogueProps {
   description?: string;
   cta?: boolean;
   help?: boolean;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
   navigation?: "chevron" | "confirmation";
 }
 
@@ -29,12 +31,19 @@ const Dialogue = ({
   description,
   cta = false,
   help = false,
+  onMouseEnter,
+  onMouseLeave,
   navigation,
 }: DialogueProps) => (
   <div className={styles.container} style={{ width: width }}>
     {help && (
       <div className={styles.help}>
-        <Button iconName="QuestionLg" theme="yellow" />
+        <Button
+          iconName="QuestionLg"
+          theme="yellow"
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        />
       </div>
     )}
     {children ? (

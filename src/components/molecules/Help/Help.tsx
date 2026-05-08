@@ -25,7 +25,6 @@ const Help = ({}: HelpProps) => (
               Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
             </li>
             <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            <li>Laboris nisi ut aliquip ex ea commodo consequat</li>
           </ol>
         </div>
       </div>
