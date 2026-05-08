@@ -1,26 +1,14 @@
 .container {
-  font-family: "Open Sans";
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 64px;
-
-  max-width: 350px;
-  // height: 590px;
-  margin: 0 auto;
-  padding: 32px;
-  outline: 2px solid rgba(60, 60, 60, 0.45);
-  outline-offset: 5px;
-
-  color: #fff;
-  background: rgba(60, 60, 60, 0.45);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  padding: 24px;
 }
 
 .copy {
+  color: #fff;
+  font-family: "Open Sans";
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -44,19 +32,19 @@
     font-size: 16px;
 
     ol {
-      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0 0 0 24px;
       margin: 0;
-
-      li {
-        padding: 4px 0;
-      }
     }
   }
 }
 
-.cta {
+.buttons {
   display: flex;
-  gap: 64px;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .video {
