@@ -68,7 +68,7 @@ export const No: Story = {
 
 export const Help: Story = {
   args: {
-    iconName: "InfoLg",
+    iconName: "QuestionLg",
     theme: "yellow",
   },
   globals: {

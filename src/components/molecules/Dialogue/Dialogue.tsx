@@ -7,6 +7,7 @@ export interface DialogueProps {
   title?: string;
   description?: string;
   cta?: boolean;
+  help?: boolean;
   navigation?: "chevron" | "confirmation";
 }
 
@@ -27,9 +28,15 @@ const Dialogue = ({
   title,
   description,
   cta = false,
+  help = false,
   navigation,
 }: DialogueProps) => (
   <div className={styles.container} style={{ width: width }}>
+    {help && (
+      <div className={styles.help}>
+        <Button iconName="QuestionLg" theme="yellow" />
+      </div>
+    )}
     {children ? (
       children
     ) : (
