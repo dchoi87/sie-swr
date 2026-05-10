@@ -1,0 +1,64 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.copy {
+  font-family: "Open Sans";
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #fff;
+
+  .title {
+    font-family: "PT Sans";
+    font-size: 56px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .description {
+    font-size: 16px;
+    max-width: 500px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 24px;
+  column-gap: 64px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    color: #fff;
+    width: 24px;
+    height: 24px;
+  }
+
+  .medication {
+    font-family: "Open Sans";
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+
+    .title {
+      font-family: "PT Sans";
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: capitalize;
+      color: #c1d2db;
+    }
+
+    .description {
+      font-size: 14px;
+    }
+  }
+}

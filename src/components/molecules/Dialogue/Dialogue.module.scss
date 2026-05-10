@@ -6,7 +6,7 @@
   justify-content: center;
   gap: 64px;
 
-  max-width: 800px;
+  width: 800px;
   min-height: 600px;
   outline: 2px solid rgba(60, 60, 60, 0.45);
   outline-offset: 5px;
@@ -16,6 +16,10 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+
+  &.navPadding {
+    padding-bottom: 48px;
+  }
 }
 
 .copy {

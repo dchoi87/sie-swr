@@ -1,4 +1,7 @@
+import classNames from "classnames";
+
 import { Button } from "@/components/atoms";
+
 import styles from "./Dialogue.module.scss";
 
 export interface DialogueProps {
@@ -11,6 +14,7 @@ export interface DialogueProps {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   navigation?: "chevron" | "confirmation";
+  dots?: number;
 }
 
 const icons = {
@@ -34,8 +38,12 @@ const Dialogue = ({
   onMouseEnter,
   onMouseLeave,
   navigation,
+  dots = 5,
 }: DialogueProps) => (
-  <div className={styles.container} style={{ width: width }}>
+  <div
+    className={classNames(styles.container, navigation && styles.navPadding)}
+    style={{ width: width }}
+  >
     {help && (
       <div className={styles.help}>
         <Button
@@ -66,7 +74,7 @@ const Dialogue = ({
           theme={navigation === "confirmation" ? "red" : "neutral"}
         />
         <div className={styles.dots}>
-          {[...Array(5)].map((_el, i) => {
+          {[...Array(dots)].map((_el, i) => {
             return <div key={`dot-${i}`} className={styles.dot}></div>;
           })}
         </div>
