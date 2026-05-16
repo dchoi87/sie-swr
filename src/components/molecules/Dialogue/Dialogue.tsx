@@ -6,6 +6,7 @@ import styles from "./Dialogue.module.scss";
 
 export interface DialogueProps {
   width?: string;
+  alignment?: string;
   children?: React.ReactNode;
   title?: string;
   description?: string;
@@ -30,6 +31,7 @@ const icons = {
 
 const Dialogue = ({
   width = "800px",
+  alignment = "center",
   children,
   title,
   description,
@@ -42,7 +44,7 @@ const Dialogue = ({
 }: DialogueProps) => (
   <div
     className={classNames(styles.container, navigation && styles.navPadding)}
-    style={{ width: width }}
+    style={{ width: width, justifyContent: alignment }}
   >
     {help && (
       <div className={styles.help}>

@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 48px;
-  padding: 16px;
+  width: 100%;
 }
 
 .copy {
@@ -12,6 +12,7 @@
   flex-direction: column;
   gap: 8px;
   color: #fff;
+  padding: 32px 32px 0;
 
   .title {
     font-family: "PT Sans";
@@ -26,11 +27,18 @@
   }
 }
 
+.gridWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 24px;
-  column-gap: 48px;
+  row-gap: 32px;
+  column-gap: 64px;
+  padding: 0 32px;
 }
 
 .listItem {
