@@ -1,11 +1,11 @@
-import styles from "./List.module.scss";
+import styles from "./Medications.module.scss";
 
 import { Icon } from "@/components/atoms";
 import { Dialogue } from "@/components/molecules";
 
-export interface ListProps {}
+export interface MedicationsProps {}
 
-const List = ({}: ListProps) => {
+const Medications = ({}: MedicationsProps) => {
   return (
     <Dialogue width="1000px" navigation="confirmation" dots={2}>
       <div className={styles.container}>
@@ -16,7 +16,7 @@ const List = ({}: ListProps) => {
           </div>
         </div>
         <div className={styles.grid}>
-          {[...Array(15)].map((_el, i) => {
+          {[...Array(10)].map((_el, i) => {
             return (
               <div key={`li-${i}`} className={styles.listItem}>
                 <Icon iconName={i > 1 ? "Prescription" : "Eyedropper"} />
@@ -37,4 +37,4 @@ const List = ({}: ListProps) => {
   );
 };
 
-export default List;
+export default Medications;
