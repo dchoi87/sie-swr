@@ -3,11 +3,11 @@ import { Button, Icon } from "@/components/atoms";
 
 import video from "@/assets/calibration.mp4";
 
-import styles from "./Help.module.scss";
+import styles from "./HelpPanel.module.scss";
 
-export interface HelpProps {}
+export interface HelpPanelProps {}
 
-const Help = ({}: HelpProps) => (
+const HelpPanel = ({}: HelpPanelProps) => (
   <Dialogue width="350px">
     <div className={styles.container}>
       <div className={styles.copy}>
@@ -46,4 +46,4 @@ const Help = ({}: HelpProps) => (
   </Dialogue>
 );
 
-export default Help;
+export default HelpPanel;

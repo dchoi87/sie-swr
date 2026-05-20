@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import image from "@/assets/waiting-room.png";
 
-import Help from "./Help";
+import HelpPanel from "./HelpPanel";
 
 const meta = {
-  title: "Molecules/Help",
-  component: Help,
+  title: "Molecules/Help Panel",
+  component: HelpPanel,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -27,7 +27,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Help>;
+} satisfies Meta<typeof HelpPanel>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

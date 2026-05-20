@@ -1,0 +1,29 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #fff;
+
+  &.center {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+.title {
+  font-family: "PT Sans";
+  font-size: 56px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.subtext {
+  font-family: "Open Sans";
+  font-size: 16px;
+}
