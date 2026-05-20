@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import image from "@/assets/waiting-room.png";
 
 import ContentBlock from "./ContentBlock";
 
@@ -15,12 +14,7 @@ const meta = {
     (Story) => (
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          padding: "8rem",
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          width: "600px",
         }}
       >
         <Story />
@@ -33,5 +27,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    title: "Lorem Ipsum Dolor Sit",
+    copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    cta: "Continue",
+  },
+  globals: {
+    backgrounds: { value: "dark" },
+  },
 };

@@ -4,15 +4,14 @@ import styles from "./Header.module.scss";
 
 export interface HeaderProps {
   alignment?: "left" | "center";
+  title: string;
+  subtext?: string;
 }
 
-const Header = ({ alignment = "left" }: HeaderProps) => (
+const Header = ({ alignment = "left", title, subtext }: HeaderProps) => (
   <div className={classNames(styles.container, styles[alignment])}>
-    <h1 className={styles.title}>Lorem Ipsum Dolor Sit</h1>
-    <h2 className={styles.subtext}>
-      Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua ut enim ad minim
-    </h2>
+    <h1 className={styles.title}>{title}</h1>
+    {subtext && <h2 className={styles.subtext}>{subtext}</h2>}
   </div>
 );
 

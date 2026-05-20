@@ -27,7 +27,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    title: "Lorem Ipsum Dolor Sit",
+    subtext:
+      "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim",
+  },
   globals: {
     backgrounds: { value: "dark" },
   },
@@ -35,6 +39,7 @@ export const Default: Story = {
 
 export const Centered: Story = {
   args: {
+    ...Default.args,
     alignment: "center",
   },
   globals: {
