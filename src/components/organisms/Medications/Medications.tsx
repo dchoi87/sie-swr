@@ -20,24 +20,22 @@ const Medications = ({}: MedicationsProps) => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit
           </div>
         </div>
-        <div className={styles.gridWrapper}>
-          <div className={styles.grid}>
-            {[...Array(10)].map((_el, i) => {
-              return (
-                <div key={`li-${i}`} className={styles.listItem}>
-                  <Icon iconName={i > 2 ? "Prescription" : "Eyedropper"} />
-                  <div className={styles.medication}>
-                    <div className={styles.title}>
-                      Loremipsumdolorsitametzine 6mg
-                    </div>
-                    <div className={styles.description}>
-                      Lorem ipsum dolor sit amet
-                    </div>
+        <div className={styles.grid}>
+          {[...Array(10)].map((_el, i) => {
+            return (
+              <div key={`li-${i}`} className={styles.listItem}>
+                <Icon iconName={i > 2 ? "Prescription" : "Eyedropper"} />
+                <div className={styles.medication}>
+                  <div className={styles.title}>
+                    Loremipsumdolorsitametzine 6mg
+                  </div>
+                  <div className={styles.description}>
+                    Lorem ipsum dolor sit amet
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </Dialogue>

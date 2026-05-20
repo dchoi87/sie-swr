@@ -75,11 +75,13 @@ const Dialogue = ({
           iconName={icons[navigation].left}
           theme={navigation === "confirmation" ? "red" : "neutral"}
         />
-        <div className={styles.dots}>
-          {[...Array(dots)].map((_el, i) => {
-            return <div key={`dot-${i}`} className={styles.dot}></div>;
-          })}
-        </div>
+        {navigation === "chevron" && (
+          <div className={styles.dots}>
+            {[...Array(dots)].map((_el, i) => {
+              return <div key={`dot-${i}`} className={styles.dot}></div>;
+            })}
+          </div>
+        )}
         <Button
           iconName={icons[navigation].right}
           theme={navigation === "confirmation" ? "green" : "neutral"}
