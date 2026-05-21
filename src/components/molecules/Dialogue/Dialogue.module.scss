@@ -21,8 +21,12 @@
     justify-content: flex-end;
   }
 
-  &.spacing {
+  &.bottomSpacing {
     padding-bottom: 64px;
+  }
+
+  &.topSpacing {
+    padding-top: 64px;
   }
 }
 

@@ -38,7 +38,8 @@ const Dialogue = ({
   <div
     className={classNames(
       styles.container,
-      navigation && styles.spacing,
+      navigation && styles.bottomSpacing,
+      help && !navigation && styles.topSpacing,
       styles[alignment],
     )}
   >

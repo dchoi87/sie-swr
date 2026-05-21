@@ -42,6 +42,7 @@ export const Default: Story = {
         cta="Continue"
       />
     ),
+    help: true,
   },
 };
 

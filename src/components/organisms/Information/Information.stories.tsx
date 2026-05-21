@@ -21,6 +21,7 @@ const meta = {
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          overflow: "hidden",
         }}
       >
         <Story />
