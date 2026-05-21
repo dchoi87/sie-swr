@@ -6,11 +6,8 @@ import styles from "./Dialogue.module.scss";
 
 export interface DialogueProps {
   width?: string;
-  alignment?: string;
+  alignment?: "top" | "center" | "bottom";
   children?: React.ReactNode;
-  title?: string;
-  description?: string;
-  cta?: boolean;
   help?: boolean;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
@@ -30,12 +27,8 @@ const icons = {
 } as const;
 
 const Dialogue = ({
-  width = "800px",
   alignment = "center",
   children,
-  title,
-  description,
-  cta = false,
   help = false,
   onMouseEnter,
   onMouseLeave,
@@ -43,8 +36,11 @@ const Dialogue = ({
   dots = 5,
 }: DialogueProps) => (
   <div
-    className={classNames(styles.container, navigation && styles.navPadding)}
-    style={{ width: width, justifyContent: alignment }}
+    className={classNames(
+      styles.container,
+      navigation && styles.spacing,
+      styles[alignment],
+    )}
   >
     {help && (
       <div className={styles.help}>
@@ -56,19 +52,7 @@ const Dialogue = ({
         />
       </div>
     )}
-    {children ? (
-      children
-    ) : (
-      <div className={styles.copy}>
-        {title && <div className={styles.title}>{title}</div>}
-        {description && <div className={styles.description}>{description}</div>}
-      </div>
-    )}
-    {cta && (
-      <div className={styles.cta}>
-        <Button label="Lorem Ipsum" iconName="ArrowRight" />
-      </div>
-    )}
+    {children && children}
     {navigation && (
       <div className={styles.navigation}>
         <Button

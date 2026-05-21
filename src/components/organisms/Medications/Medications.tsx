@@ -7,12 +7,7 @@ export interface MedicationsProps {}
 
 const Medications = ({}: MedicationsProps) => {
   return (
-    <Dialogue
-      width="800px"
-      navigation="confirmation"
-      dots={2}
-      alignment="flex-start"
-    >
+    <Dialogue navigation="confirmation">
       <div className={styles.container}>
         <div className={styles.copy}>
           <div className={styles.title}>Medication History</div>

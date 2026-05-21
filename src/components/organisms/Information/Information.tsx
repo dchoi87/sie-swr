@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-import { Dialogue, Help } from "@/components/molecules";
+import { ContentBlock, Dialogue, HelpPanel } from "@/components/molecules";
 
 import styles from "./Information.module.scss";
 
@@ -31,15 +31,14 @@ const Information = ({}: InformationProps) => {
       data-help-open={showHelp}
       onMouseLeave={handleInformationLeave}
     >
-      <Dialogue
-        title="Need Help?"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        navigation="chevron"
-        help
-        onMouseEnter={handleHelpEnter}
-      />
+      <Dialogue navigation="chevron" help onMouseEnter={handleHelpEnter}>
+        <ContentBlock
+          title="Lorem Ipsum Dolor Sit"
+          copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        />
+      </Dialogue>
       <div className={styles.helpPanel} aria-hidden={!showHelp}>
-        <Help />
+        <HelpPanel />
       </div>
     </div>
   );

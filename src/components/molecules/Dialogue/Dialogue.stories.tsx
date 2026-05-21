@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import image from "@/assets/waiting-room.png";
 
 import Dialogue from "./Dialogue";
+import { ContentBlock } from "@/components/molecules";
 
 const meta = {
   title: "Molecules/Dialogue",
@@ -34,18 +35,26 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: "Lorem Ipsum",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    cta: true,
+    children: (
+      <ContentBlock
+        title="Lorem Ipsum Dolor Sit"
+        copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        cta="Continue"
+      />
+    ),
   },
 };
 
 export const Navigation: Story = {
   args: {
-    ...Default.args,
+    children: (
+      <ContentBlock
+        title="Lorem Ipsum Dolor Sit"
+        copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      />
+    ),
+    help: true,
     navigation: "chevron",
-    cta: false,
   },
 };
 
@@ -53,6 +62,5 @@ export const Confirmation: Story = {
   args: {
     ...Navigation.args,
     navigation: "confirmation",
-    help: true,
   },
 };
