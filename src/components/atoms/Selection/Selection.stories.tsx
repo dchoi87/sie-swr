@@ -1,16 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import SelectionsGrid from "./SelectionsGrid";
+import Selection from "./Selection";
 
 const meta = {
-  title: "Molecules/Selections Grid",
-  component: SelectionsGrid,
-  tags: ["autodocs"],
+  title: "Atoms/Selection",
+  component: Selection,
   parameters: {
     layout: "centered",
   },
-  argTypes: {},
-} satisfies Meta<typeof SelectionsGrid>;
+  tags: ["autodocs"],
+} satisfies Meta<typeof Selection>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

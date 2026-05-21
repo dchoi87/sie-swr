@@ -1,12 +1,31 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import styles from "./Dot.module.scss";
+
+import { Icon } from "@/components/atoms";
+
+import styles from "./Selection.module.scss";
 
 const RING_OFFSET = 8;
 const RING_WIDTH = 3;
 
-const Dot = () => {
+const Selection = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [path, setPath] = useState("");
+  const [selected, setSelected] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMouseEnter = () => {
+    timerRef.current = setTimeout(() => {
+      setSelected(!selected);
+      timerRef.current = null;
+    }, 2200);
+  };
+
+  const handleMouseLeave = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  };
 
   useLayoutEffect(() => {
     const button = buttonRef.current;
@@ -26,13 +45,13 @@ const Dot = () => {
       const centerX = width / 2;
 
       setPath(`
-        M ${centerX} ${top}
-        H ${right - radius}
-        A ${radius} ${radius} 0 0 1 ${right - radius} ${bottom}
-        H ${left + radius}
-        A ${radius} ${radius} 0 0 1 ${left + radius} ${top}
-        H ${centerX}
-      `);
+          M ${centerX} ${top}
+          H ${right - radius}
+          A ${radius} ${radius} 0 0 1 ${right - radius} ${bottom}
+          H ${left + radius}
+          A ${radius} ${radius} 0 0 1 ${left + radius} ${top}
+          H ${centerX}
+        `);
     };
 
     updatePath();
@@ -44,7 +63,13 @@ const Dot = () => {
   }, []);
 
   return (
-    <button ref={buttonRef} className={styles.dot}>
+    <button
+      ref={buttonRef}
+      className={styles.button}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Icon iconName={selected ? "CheckCircleFill" : "Circle"} />
       <svg className={styles.ring} aria-hidden="true">
         <path className={styles.ringPath} d={path} pathLength="1" />
       </svg>
@@ -52,4 +77,4 @@ const Dot = () => {
   );
 };
 
-export default Dot;
+export default Selection;
