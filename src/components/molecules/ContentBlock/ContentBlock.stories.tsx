@@ -19,6 +19,15 @@ export const Default: Story = {
   args: {
     title: "Lorem Ipsum Dolor Sit",
     copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  globals: {
+    backgrounds: { value: "dark" },
+  },
+};
+
+export const WithCTA: Story = {
+  args: {
+    ...Default.args,
     cta: "Continue",
   },
   globals: {

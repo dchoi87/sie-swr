@@ -6,7 +6,7 @@ export interface ChiefComplaintProps {}
 
 const ChiefComplaint = ({}: ChiefComplaintProps) => {
   return (
-    <Dialogue width="800px">
+    <Dialogue>
       <div>Hello World</div>
     </Dialogue>
   );

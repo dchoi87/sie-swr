@@ -1,4 +1,4 @@
 export { default as Calibration } from "./Calibration";
 export { default as ChiefComplaint } from "./ChiefComplaint";
 export { default as Information } from "./Information";
-export { default as Medications } from "./Medications";
+export { default as MedicationHistory } from "./MedicationHistory";

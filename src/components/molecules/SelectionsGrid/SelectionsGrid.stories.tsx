@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import image from "@/assets/waiting-room.png";
 
 import SelectionsGrid from "./SelectionsGrid";
 
@@ -11,22 +10,6 @@ const meta = {
     layout: "centered",
   },
   argTypes: {},
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          padding: "8rem",
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof SelectionsGrid>;
 
 export default meta;

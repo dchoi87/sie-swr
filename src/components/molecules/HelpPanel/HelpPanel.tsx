@@ -33,12 +33,14 @@ const HelpPanel = ({}: HelpPanelProps) => (
           label="Skip Module"
           theme="green"
           iconName="SkipEnd"
+          iconPos="start"
           alignment="center"
         />
         <Button
           label="Restart Module"
           theme="red"
           iconName="Power"
+          iconPos="start"
           alignment="center"
         />
       </div>

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import image from "@/assets/waiting-room.png";
 
-import Medications from "./Medications";
+import MedicationHistory from "./MedicationHistory";
 
 const meta = {
-  title: "Organisms/Medications",
-  component: Medications,
+  title: "Organisms/Medication History",
+  component: MedicationHistory,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -27,7 +27,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Medications>;
+} satisfies Meta<typeof MedicationHistory>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
