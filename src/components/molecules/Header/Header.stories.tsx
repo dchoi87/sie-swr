@@ -46,3 +46,13 @@ export const Centered: Story = {
     backgrounds: { value: "dark" },
   },
 };
+
+export const WithSeparator: Story = {
+  args: {
+    ...Default.args,
+    separator: true,
+  },
+  globals: {
+    backgrounds: { value: "dark" },
+  },
+};

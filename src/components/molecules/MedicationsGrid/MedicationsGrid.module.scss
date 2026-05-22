@@ -1,37 +1,37 @@
 .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  width: 600px;
+  gap: 32px;
+  width: 900px;
 }
 
 .listItem {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
 
   svg {
     color: #fff;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
   }
 
-  .medication {
+  .copy {
     font-family: "Open Sans";
     display: flex;
     flex-direction: column;
     color: #fff;
 
     .title {
-      font-family: "PT Sans";
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 600;
       text-transform: capitalize;
-      color: #c1d2db;
+      // color: #c1d2db;
     }
 
-    .description {
+    .subtext {
       font-size: 14px;
+      font-weight: 400;
     }
   }
 }

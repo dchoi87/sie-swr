@@ -8,7 +8,7 @@ import styles from "./HelpPanel.module.scss";
 export interface HelpPanelProps {}
 
 const HelpPanel = ({}: HelpPanelProps) => (
-  <Dialogue>
+  <Dialogue noSpacing={true}>
     <div className={styles.container}>
       <div className={styles.copy}>
         <div className={styles.title}>

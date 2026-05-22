@@ -12,6 +12,7 @@ const ChiefComplaint = ({}: ChiefComplaintProps) => {
           title="What eye issues are you experiencing today?"
           subtext="Please select all that apply. Focus your gaze on the circle to make your selection"
           size="medium"
+          separator={true}
         />
         <SelectionsGrid />
       </div>

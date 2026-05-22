@@ -7,6 +7,7 @@ export interface HeaderProps {
   size?: "medium" | "large";
   title: string;
   subtext?: string;
+  separator?: boolean;
 }
 
 const Header = ({
@@ -14,8 +15,15 @@ const Header = ({
   title,
   subtext,
   size = "large",
+  separator,
 }: HeaderProps) => (
-  <div className={classNames(styles.container, styles[alignment])}>
+  <div
+    className={classNames(
+      styles.container,
+      styles[alignment],
+      separator && styles.separator,
+    )}
+  >
     <h1 className={classNames(styles.title, styles[size])}>{title}</h1>
     {subtext && <h2 className={styles.subtext}>{subtext}</h2>}
   </div>

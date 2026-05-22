@@ -12,9 +12,9 @@ const MedicationsGrid = ({}: MedicationsGridProps) => (
       return (
         <div key={`li-${i}`} className={styles.listItem}>
           <Icon iconName={i > 2 ? "Prescription" : "Eyedropper"} />
-          <div className={styles.medication}>
+          <div className={styles.copy}>
             <div className={styles.title}>Loremipsumdolorsitametzine 6mg</div>
-            <div className={styles.description}>Lorem ipsum dolor sit amet</div>
+            <div className={styles.subtext}>Lorem ipsum dolor sit amet</div>
           </div>
         </div>
       );
