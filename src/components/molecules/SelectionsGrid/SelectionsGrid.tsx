@@ -4,28 +4,28 @@ import { Selection } from "@/components/atoms";
 
 import styles from "./SelectionsGrid.module.scss";
 
-export interface SelectionsGridProps {}
+export type Issue = {
+  title: string;
+  subtext?: string;
+};
+export interface SelectionsGridProps {
+  data: Issue[];
+  columns?: "one" | "two";
+  theme?: "list" | "card";
+}
 
-const issues = [
-  { title: "Vision Change", subtext: "Lorem ipsum dolor sit amet consectetur" },
-  {
-    title: "Flashes / Floaters",
-  },
-  {
-    title: "Pain / Discomfort",
-  },
-  { title: "Dry Eyes", subtext: "Lorem ipsum dolor sit amet consectetur" },
-  {
-    title: "Redness / Irritation",
-  },
-  { title: "Injury", subtext: "Lorem ipsum dolor sit amet consectetur" },
-];
-
-const SelectionsGrid = ({}: SelectionsGridProps) => (
-  <div className={styles.container}>
-    {issues.map((issue, i) => {
+const SelectionsGrid = ({
+  data,
+  columns = "two",
+  theme = "card",
+}: SelectionsGridProps) => (
+  <div className={classNames(styles.container, styles[columns])}>
+    {data.map((issue, i) => {
       return (
-        <div key={`selection-${i}`} className={styles.selection}>
+        <div
+          key={`selection-${i}`}
+          className={classNames(styles.selection, styles[theme])}
+        >
           <Selection />
           <div className={styles.copy}>
             <span className={styles.title}>{issue.title}</span>

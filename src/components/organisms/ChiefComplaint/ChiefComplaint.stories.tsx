@@ -10,7 +10,27 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
-  argTypes: {},
+  argTypes: {
+    data: {
+      table: {
+        category: "Grid",
+      },
+    },
+    columns: {
+      control: "radio",
+      options: ["one", "two"],
+      table: {
+        category: "Grid",
+      },
+    },
+    theme: {
+      control: "radio",
+      options: ["list", "card"],
+      table: {
+        category: "Item",
+      },
+    },
+  },
   decorators: [
     (Story) => (
       <div
@@ -33,5 +53,25 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    data: [
+      {
+        title: "Vision Change",
+        subtext: "Lorem ipsum dolor sit amet consectetur",
+      },
+      {
+        title: "Flashes / Floaters",
+      },
+      {
+        title: "Pain / Discomfort",
+      },
+      { title: "Dry Eyes", subtext: "Lorem ipsum dolor sit amet consectetur" },
+      {
+        title: "Redness / Irritation",
+      },
+      { title: "Injury", subtext: "Lorem ipsum dolor sit amet consectetur" },
+    ],
+    theme: "list",
+    columns: "one",
+  },
 };

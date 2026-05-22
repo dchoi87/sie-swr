@@ -1,19 +1,20 @@
 .container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  width: 900px;
+  width: 800px;
+
+  &.two {
+    grid-template-columns: repeat(2, 1fr);
+    width: 900px;
+  }
 }
 
 .selection {
   display: flex;
   align-items: center;
   gap: 48px;
-  padding: 24px;
+  padding: 16px;
   color: #fff;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
   border-radius: 8px;
 
   svg {
@@ -43,5 +44,12 @@
   &:hover {
     box-shadow: 0 0 0 5px #fff;
     cursor: pointer;
+  }
+
+  &.card {
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
   }
 }

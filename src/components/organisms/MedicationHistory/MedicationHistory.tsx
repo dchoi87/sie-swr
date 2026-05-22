@@ -9,8 +9,8 @@ const MedicationHistory = ({}: MedicationHistoryProps) => {
     <Dialogue navigation="confirmation">
       <div className={styles.container}>
         <Header
-          title="Medication History"
-          subtext="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          title="Are These Medications Up to Date?"
+          subtext="Please review your current medications below and confirm they are correct"
           size="medium"
           separator={true}
         />

@@ -1,10 +1,9 @@
 import styles from "./ChiefComplaint.module.scss";
 
 import { Dialogue, Header, SelectionsGrid } from "@/components/molecules";
+import { type SelectionsGridProps } from "@/components/molecules/SelectionsGrid/SelectionsGrid";
 
-export interface ChiefComplaintProps {}
-
-const ChiefComplaint = ({}: ChiefComplaintProps) => {
+const ChiefComplaint = ({ data, theme, columns }: SelectionsGridProps) => {
   return (
     <Dialogue help navigation="chevron">
       <div className={styles.container}>
@@ -14,7 +13,7 @@ const ChiefComplaint = ({}: ChiefComplaintProps) => {
           size="medium"
           separator={true}
         />
-        <SelectionsGrid />
+        <SelectionsGrid data={data} theme={theme} columns={columns} />
       </div>
     </Dialogue>
   );
