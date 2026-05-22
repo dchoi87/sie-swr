@@ -30,9 +30,7 @@ const SelectionsGrid = ({
           <div className={styles.copy}>
             <span className={styles.title}>{issue.title}</span>
             {issue.subtext && (
-              <span className={styles.subtext}>
-                Lorem ipsum dolor sit amet consectetur
-              </span>
+              <span className={styles.subtext}>{issue.subtext}</span>
             )}
           </div>
         </div>

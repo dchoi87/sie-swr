@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import image from "@/assets/waiting-room.png";
 
-import ChiefComplaint from "./ChiefComplaint";
+import FamilyHistory from "./FamilyHistory";
 
 const meta = {
-  title: "Organisms/Chief Complaint",
-  component: ChiefComplaint,
+  title: "Organisms/Family History",
+  component: FamilyHistory,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -47,7 +47,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof ChiefComplaint>;
+} satisfies Meta<typeof FamilyHistory>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -56,22 +56,21 @@ export const Default: Story = {
   args: {
     data: [
       {
-        title: "Vision Change",
-        subtext: "Lorem ipsum dolor sit amet consectetur",
+        title: "Blindness",
       },
       {
-        title: "Flashes / Floaters",
+        title: "Retinal Detachment",
       },
       {
-        title: "Pain / Discomfort",
+        title: "Amblyopia",
+        subtext: "Poor vision in one eye",
       },
-      { title: "Dry Eyes", subtext: "Lorem ipsum dolor sit amet consectetur" },
       {
-        title: "Redness / Irritation",
+        title: "Strabismus",
+        subtext: "Crossed or wandering eye",
       },
-      { title: "Injury", subtext: "Lorem ipsum dolor sit amet consectetur" },
     ],
-    theme: "card",
-    columns: "two",
+    theme: "list",
+    columns: "one",
   },
 };

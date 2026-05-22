@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import image from "@/assets/waiting-room.png";
 
-import ChiefComplaint from "./ChiefComplaint";
+import HPI from "./HPI";
 
 const meta = {
-  title: "Organisms/Chief Complaint",
-  component: ChiefComplaint,
+  title: "Organisms/HPI",
+  component: HPI,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -47,7 +47,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof ChiefComplaint>;
+} satisfies Meta<typeof HPI>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -56,20 +56,14 @@ export const Default: Story = {
   args: {
     data: [
       {
-        title: "Vision Change",
-        subtext: "Lorem ipsum dolor sit amet consectetur",
+        title: "Left",
       },
       {
-        title: "Flashes / Floaters",
+        title: "Right",
       },
       {
-        title: "Pain / Discomfort",
+        title: "Both",
       },
-      { title: "Dry Eyes", subtext: "Lorem ipsum dolor sit amet consectetur" },
-      {
-        title: "Redness / Irritation",
-      },
-      { title: "Injury", subtext: "Lorem ipsum dolor sit amet consectetur" },
     ],
     theme: "card",
     columns: "two",
