@@ -1,10 +1,9 @@
-import styles from "./MedicationHistory.module.scss";
+import styles from "./OralMedication.module.scss";
 
 import { Dialogue, Header, MedicationsGrid } from "@/components/molecules";
+import { type MedicationsGridProps } from "@/components/molecules/MedicationsGrid/MedicationsGrid";
 
-export interface MedicationHistoryProps {}
-
-const MedicationHistory = ({}: MedicationHistoryProps) => {
+const OralMedication = ({ data }: MedicationsGridProps) => {
   return (
     <Dialogue navigation="confirmation">
       <div className={styles.container}>
@@ -14,10 +13,10 @@ const MedicationHistory = ({}: MedicationHistoryProps) => {
           size="medium"
           separator={true}
         />
-        <MedicationsGrid />
+        <MedicationsGrid data={data} />
       </div>
     </Dialogue>
   );
 };
 
-export default MedicationHistory;
+export default OralMedication;

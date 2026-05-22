@@ -4,17 +4,27 @@ import { Icon } from "@/components/atoms";
 
 import styles from "./MedicationsGrid.module.scss";
 
-export interface MedicationsGridProps {}
+export type Medication = {
+  title: string;
+  subtext?: string;
+  type: string;
+};
 
-const MedicationsGrid = ({}: MedicationsGridProps) => (
+export interface MedicationsGridProps {
+  data: Medication[];
+}
+
+const MedicationsGrid = ({ data }: MedicationsGridProps) => (
   <div className={styles.container}>
-    {[...Array(10)].map((_el, i) => {
+    {data.map((med, i) => {
       return (
         <div key={`li-${i}`} className={styles.listItem}>
-          <Icon iconName={i > 2 ? "Prescription" : "Eyedropper"} />
+          <Icon
+            iconName={med.type === "oral" ? "Prescription" : "Eyedropper"}
+          />
           <div className={styles.copy}>
-            <div className={styles.title}>Loremipsumdolorsitametzine 6mg</div>
-            <div className={styles.subtext}>Lorem ipsum dolor sit amet</div>
+            <div className={styles.title}>{med.title}</div>
+            <div className={styles.subtext}>{med.subtext}</div>
           </div>
         </div>
       );

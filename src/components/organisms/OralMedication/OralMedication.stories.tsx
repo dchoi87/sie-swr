@@ -1,16 +1,33 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import image from "@/assets/waiting-room.png";
 
-import MedicationsGrid from "./MedicationsGrid";
+import OralMedication from "./OralMedication";
 
 const meta = {
-  title: "Molecules/Medications Grid",
-  component: MedicationsGrid,
+  title: "Organisms/Oral Medication",
+  component: OralMedication,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {},
-} satisfies Meta<typeof MedicationsGrid>;
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "8rem",
+          backgroundImage: `url(${image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
+} satisfies Meta<typeof OralMedication>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -18,21 +35,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     data: [
-      {
-        title: "Latanoprost 0.005%",
-        subtext: "Glaucoma / High Eye Pressure",
-        type: "eyedrop",
-      },
-      {
-        title: "Timolol 0.25%",
-        subtext: "Glaucoma",
-        type: "eyedrop",
-      },
-      {
-        title: "Prednisolone Acetate 1%",
-        subtext: "Eye Inflammation",
-        type: "eyedrop",
-      },
       {
         title: "Acetazolamide 250mg",
         subtext: "Glaucoma / Eye Pressure",
@@ -54,8 +56,5 @@ export const Default: Story = {
         type: "oral",
       },
     ],
-  },
-  globals: {
-    backgrounds: { value: "dark" },
   },
 };

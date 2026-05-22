@@ -70,7 +70,7 @@ export const Default: Story = {
         subtext: "Crossed or wandering eye",
       },
     ],
-    theme: "list",
+    theme: "card",
     columns: "one",
   },
 };
