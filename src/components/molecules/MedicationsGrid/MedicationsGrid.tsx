@@ -1,5 +1,3 @@
-import classNames from "classnames";
-
 import { Icon } from "@/components/atoms";
 
 import styles from "./MedicationsGrid.module.scss";

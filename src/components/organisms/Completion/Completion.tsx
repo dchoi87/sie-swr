@@ -1,7 +1,4 @@
-import classNames from "classnames";
-
-import { Icon } from "@/components/atoms";
-import { Dialogue, Header, ContentBlock } from "@/components/molecules";
+import { Dialogue, Header } from "@/components/molecules";
 
 import styles from "./Completion.module.scss";
 
