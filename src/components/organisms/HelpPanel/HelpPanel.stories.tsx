@@ -4,7 +4,7 @@ import image from "@/assets/waiting-room.png";
 import HelpPanel from "./HelpPanel";
 
 const meta = {
-  title: "Molecules/Help Panel",
+  title: "Organisms/Help Panel",
   component: HelpPanel,
   tags: ["autodocs"],
   parameters: {
@@ -21,6 +21,7 @@ const meta = {
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          overflow: "hidden",
         }}
       >
         <Story />
