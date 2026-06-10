@@ -29,7 +29,7 @@ const HelpPanel = ({}: HelpPanelProps) => {
     <div className={styles.container}>
       <Dialogue
         navigation={showOverlay ? undefined : "chevron"}
-        help
+        help={!showOverlay}
         onMouseEnter={handleHelpEnter}
         onMouseLeave={handleHelpLeave}
       >
@@ -74,27 +74,23 @@ const HelpOverlay = ({ visible, onHide }: HelpOverlayProps) => {
       className={classNames(styles.overlay, visible && styles.overlayVisible)}
     >
       <div className={styles.content}>
+        <div className={styles.heading}>
+          <Header title="How to Calibrate Using Your Eyes" size="medium" />
+          <Button
+            iconName="ArrowLeft"
+            label="Exit Help"
+            iconPos="start"
+            theme="yellow"
+            onMouseEnter={handleBackEnter}
+            onMouseLeave={handleBackLeave}
+          />
+        </div>
         <div className={styles.video}>
-          <div className={styles.button}>
-            <Button
-              iconName="ArrowLeft"
-              label="Exit Help"
-              iconPos="start"
-              theme="yellow"
-              onMouseEnter={handleBackEnter}
-              onMouseLeave={handleBackLeave}
-            />
-          </div>
           <video autoPlay muted loop playsInline>
             <source src={video} type="video/mp4" />
           </video>
         </div>
         <div className={styles.copy}>
-          <Header
-            title="How to Calibrate Using Your Eyes"
-            size="medium"
-            alignment="center"
-          />
           <ol>
             <li>Follow the dot with your eyes.</li>
             <li>
@@ -103,12 +99,6 @@ const HelpOverlay = ({ visible, onHide }: HelpOverlayProps) => {
             </li>
             <li>Repeat this process for each dot throughout the test.</li>
           </ol>
-          <div className={styles.skip}>
-            <span>
-              If you would like to skip this module, you can gaze here:
-            </span>
-            <Button label="Skip Module" iconName="ArrowRight" />
-          </div>
         </div>
       </div>
     </div>
