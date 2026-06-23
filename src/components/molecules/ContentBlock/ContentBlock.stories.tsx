@@ -10,6 +10,17 @@ const meta = {
     layout: "centered",
   },
   argTypes: {},
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          width: "800px",
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof ContentBlock>;
 
 export default meta;
