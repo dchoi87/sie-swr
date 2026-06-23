@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from "react";
 import classNames from "classnames";
 import useEmblaCarousel from "embla-carousel-react";
 
+import { CarouselContext } from "@/hooks/useCarousel";
+
 import { Button } from "@/components/atoms";
 
 import "./Embla.scss";
@@ -9,13 +11,22 @@ import styles from "./Carousel.module.scss";
 
 export interface CarouselProps {
   children?: React.ReactNode;
+  size?: "sm" | "md" | "lg";
 }
 
-const Carousel = ({ children }: CarouselProps) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel();
+const Carousel = ({ children, size = "sm" }: CarouselProps) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ watchDrag: false });
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const slideCount = emblaApi?.slideNodes().length ?? 0;
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const next = () => {
+    emblaApi?.scrollNext();
+  };
+
+  const prev = () => {
+    emblaApi?.scrollPrev();
+  };
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -36,10 +47,10 @@ const Carousel = ({ children }: CarouselProps) => {
     timerRef.current = setTimeout(() => {
       switch (direction) {
         case "next":
-          emblaApi?.scrollNext();
+          next();
           break;
         case "prev":
-          emblaApi?.scrollPrev();
+          prev();
           break;
         case "help":
           console.log("help triggered");
@@ -58,48 +69,50 @@ const Carousel = ({ children }: CarouselProps) => {
   };
 
   return (
-    <div className={classNames(styles.container)}>
-      <div className={classNames(styles.help)}>
-        <Button
-          iconName="QuestionLg"
-          theme="yellow"
-          onMouseEnter={() => handleSlideEnter("help")}
-          onMouseLeave={handleSlideLeave}
-        />
-      </div>
-      <div className="embla-viewport" ref={emblaRef}>
-        <div className="embla-container">{children}</div>
-      </div>
-      {slideCount > 1 && (
-        <div className={classNames(styles.navigation)}>
+    <CarouselContext.Provider value={{ next, prev }}>
+      <div className={classNames(styles.container, styles[size])}>
+        <div className={classNames(styles.help)}>
           <Button
-            iconName="ChevronLeft"
-            onMouseEnter={() => handleSlideEnter("prev")}
+            iconName="QuestionLg"
+            theme="yellow"
+            onMouseEnter={() => handleSlideEnter("help")}
             onMouseLeave={handleSlideLeave}
-            addClassName={classNames(selectedIndex === 0 && styles.hidden)}
-          />
-          <div className={styles.dots}>
-            {emblaApi?.scrollSnapList().map((_, index) => (
-              <div
-                key={`dot-${index}`}
-                className={classNames(
-                  styles.dot,
-                  index === selectedIndex && styles.selected,
-                )}
-              ></div>
-            ))}
-          </div>
-          <Button
-            iconName="ChevronRight"
-            onMouseEnter={() => handleSlideEnter("next")}
-            onMouseLeave={handleSlideLeave}
-            addClassName={classNames(
-              selectedIndex === slideCount - 1 && styles.hidden,
-            )}
           />
         </div>
-      )}
-    </div>
+        <div className="embla-viewport" ref={emblaRef}>
+          <div className="embla-container">{children}</div>
+        </div>
+        {slideCount > 1 && (
+          <div className={classNames(styles.navigation)}>
+            <Button
+              iconName="ChevronLeft"
+              onMouseEnter={() => handleSlideEnter("prev")}
+              onMouseLeave={handleSlideLeave}
+              addClassName={classNames(selectedIndex === 0 && styles.hidden)}
+            />
+            <div className={styles.dots}>
+              {emblaApi?.scrollSnapList().map((_, index) => (
+                <div
+                  key={`dot-${index}`}
+                  className={classNames(
+                    styles.dot,
+                    index === selectedIndex && styles.selected,
+                  )}
+                ></div>
+              ))}
+            </div>
+            <Button
+              iconName="ChevronRight"
+              onMouseEnter={() => handleSlideEnter("next")}
+              onMouseLeave={handleSlideLeave}
+              addClassName={classNames(
+                selectedIndex === slideCount - 1 && styles.hidden,
+              )}
+            />
+          </div>
+        )}
+      </div>
+    </CarouselContext.Provider>
   );
 };
 

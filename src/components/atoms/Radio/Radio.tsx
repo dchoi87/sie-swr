@@ -1,13 +1,16 @@
 import { useLayoutEffect, useRef, useState } from "react";
 
+import { useCarousel } from "@/hooks";
+
 import { Icon } from "@/components/atoms";
 
-import styles from "./Selection.module.scss";
+import styles from "./Radio.module.scss";
 
 const RING_OFFSET = 8;
 const RING_WIDTH = 3;
 
-const Selection = () => {
+const Radio = () => {
+  const { next } = useCarousel();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [path, setPath] = useState("");
   const [selected, setSelected] = useState(false);
@@ -16,6 +19,7 @@ const Selection = () => {
   const handleMouseEnter = () => {
     timerRef.current = setTimeout(() => {
       setSelected(!selected);
+      next();
       timerRef.current = null;
     }, 2200);
   };
@@ -77,4 +81,4 @@ const Selection = () => {
   );
 };
 
-export default Selection;
+export default Radio;

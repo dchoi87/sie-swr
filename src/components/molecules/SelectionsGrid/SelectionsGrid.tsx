@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import { Selection } from "@/components/atoms";
+import { Radio } from "@/components/atoms";
 
 import styles from "./SelectionsGrid.module.scss";
 
@@ -26,7 +26,7 @@ const SelectionsGrid = ({
           key={`selection-${i}`}
           className={classNames(styles.selection, styles[theme])}
         >
-          <Selection />
+          <Radio />
           <div className={styles.copy}>
             <span className={styles.title}>{issue.title}</span>
             {issue.subtext && (

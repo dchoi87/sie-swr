@@ -7,7 +7,7 @@ import { ContentBlock } from "@/components/molecules";
 const meta = {
   title: "Molecules/Carousel",
   component: Carousel,
-  tags: ["autodocs"],
+  tags: ["autodocs", "new"],
   parameters: {
     layout: "fullscreen",
   },
