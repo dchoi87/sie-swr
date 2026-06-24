@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import { type ChiefComplaint } from "@/mocks/chiefComplaints";
+import { type SelectionOption } from "@/mocks/patientHistory";
 
 import { Radio } from "@/components/atoms";
 import { Header } from "@/components/molecules";
@@ -10,7 +10,7 @@ import styles from "./Selections.module.scss";
 export interface SelectionsProps {
   heading: string;
   directions?: string;
-  data: ChiefComplaint[];
+  options: SelectionOption[];
   columns?: "one" | "two";
   theme?: "list" | "card";
 }
@@ -18,7 +18,7 @@ export interface SelectionsProps {
 const Selections = ({
   heading,
   directions,
-  data,
+  options,
   columns = "two",
   theme = "card",
 }: SelectionsProps) => (
@@ -30,7 +30,7 @@ const Selections = ({
       separator={true}
     />
     <div className={classNames(styles.grid, styles[columns])}>
-      {data.map((issue, i) => {
+      {options.map((issue, i) => {
         return (
           <div
             key={`selection-${i}`}
@@ -38,9 +38,9 @@ const Selections = ({
           >
             <Radio />
             <div className={styles.copy}>
-              <span className={styles.title}>{issue.complaint}</span>
-              {issue.description && (
-                <span className={styles.subtext}>{issue.description}</span>
+              <span className={styles.title}>{issue.title}</span>
+              {issue.subtext && (
+                <span className={styles.subtext}>{issue.subtext}</span>
               )}
             </div>
           </div>

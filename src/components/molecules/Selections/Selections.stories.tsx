@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { chiefComplaints } from "@/mocks/chiefComplaints";
+import { chiefComplaints } from "@/mocks/patientHistory";
 
 import { CarouselContext } from "@/hooks/useCarousel";
 
@@ -14,7 +14,7 @@ const meta = {
     layout: "centered",
   },
   argTypes: {
-    data: {
+    options: {
       table: {
         category: "Grid",
       },
@@ -49,10 +49,7 @@ type Story = StoryObj<typeof meta>;
 
 export const OneColumn: Story = {
   args: {
-    heading: "What eye issues are you experiencing today?",
-    directions:
-      "Please select all that apply. Focus your gaze on the circle to make your selection",
-    data: chiefComplaints,
+    ...chiefComplaints,
     theme: "list",
     columns: "one",
   },
