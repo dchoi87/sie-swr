@@ -5,32 +5,49 @@ import { Dot } from "@/components/atoms";
 
 import styles from "./Calibration.module.scss";
 
+const DOT_SIZE = 30;
+const INSET_RATIO = 0.2;
+const CORNER_COUNT = 4;
+
+const getCorners = (rect: DOMRect) => {
+  const insetX = rect.width * INSET_RATIO;
+  const insetY = rect.height * INSET_RATIO;
+  const left = insetX - DOT_SIZE / 2;
+  const right = rect.width - insetX - DOT_SIZE / 2;
+  const top = insetY - DOT_SIZE / 2;
+  const bottom = rect.height - insetY - DOT_SIZE / 2;
+
+  return [
+    { x: right, y: top }, // top right
+    { x: left, y: top }, // top left
+    { x: left, y: bottom }, // bottom left
+    { x: right, y: bottom }, // bottom right
+  ];
+};
+
 const Calibration = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [directions, setDirections] = useState(true);
+  const [step, setStep] = useState(0);
 
-  const moveDot = () => {
+  const moveToNextCorner = () => {
     if (!containerRef.current) return;
 
-    const container = containerRef.current;
-    const rect = container.getBoundingClientRect();
-    const dotSize = 30;
-    const maxX = rect.width - dotSize;
-    const maxY = rect.height - dotSize;
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
-
-    setPosition({ x: randomX, y: randomY });
+    const corners = getCorners(containerRef.current.getBoundingClientRect());
+    setPosition(corners[step]);
+    setStep((prev) => prev + 1);
   };
 
   const handleHover = () => {
+    if (step >= CORNER_COUNT) return;
+
     timeoutRef.current = window.setTimeout(() => {
       if (directions) {
         setDirections(false);
       }
-      moveDot();
+      moveToNextCorner();
     }, 2200);
   };
 
@@ -45,8 +62,8 @@ const Calibration = () => {
     if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
       setPosition({
-        x: rect.width / 2,
-        y: rect.height / 2,
+        x: rect.width / 2 - DOT_SIZE / 2,
+        y: rect.height / 2 - DOT_SIZE / 2,
       });
     }
   }, []);
