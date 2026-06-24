@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
+import { chiefComplaints } from "@/mocks/chiefComplaints";
+
 import { CarouselContext } from "@/hooks/useCarousel";
 
 import Selections from "./Selections";
@@ -50,23 +52,7 @@ export const OneColumn: Story = {
     heading: "What eye issues are you experiencing today?",
     directions:
       "Please select all that apply. Focus your gaze on the circle to make your selection",
-    data: [
-      {
-        title: "Vision Change",
-        subtext: "Lorem ipsum dolor sit amet consectetur",
-      },
-      {
-        title: "Flashes / Floaters",
-      },
-      {
-        title: "Pain / Discomfort",
-      },
-      { title: "Dry Eyes", subtext: "Lorem ipsum dolor sit amet consectetur" },
-      {
-        title: "Redness / Irritation",
-      },
-      { title: "Injury", subtext: "Lorem ipsum dolor sit amet consectetur" },
-    ],
+    data: chiefComplaints,
     theme: "list",
     columns: "one",
   },

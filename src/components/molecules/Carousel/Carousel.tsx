@@ -12,9 +12,14 @@ import styles from "./Carousel.module.scss";
 export interface CarouselProps {
   children?: React.ReactNode;
   size?: "sm" | "md" | "lg";
+  navigation?: boolean;
 }
 
-const Carousel = ({ children, size = "sm" }: CarouselProps) => {
+const Carousel = ({
+  children,
+  size = "sm",
+  navigation = true,
+}: CarouselProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ watchDrag: false });
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const slideCount = emblaApi?.slideNodes().length ?? 0;
@@ -82,7 +87,7 @@ const Carousel = ({ children, size = "sm" }: CarouselProps) => {
         <div className="embla-viewport" ref={emblaRef}>
           <div className="embla-container">{children}</div>
         </div>
-        {slideCount > 1 && (
+        {navigation && slideCount > 1 && (
           <div className={classNames(styles.navigation)}>
             <Button
               iconName="ChevronLeft"
