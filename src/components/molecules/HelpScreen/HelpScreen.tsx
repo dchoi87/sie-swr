@@ -42,7 +42,6 @@ const HelpScreen = ({ theme = "contrast", onExit }: HelpScreenProps) => {
         <Header
           title="How to Calibrate Using Your Eyes"
           separator
-          size="medium"
           theme={theme}
         />
         <div className={styles.grid}>
@@ -53,12 +52,17 @@ const HelpScreen = ({ theme = "contrast", onExit }: HelpScreenProps) => {
           </div>
           <div className={styles.copy}>
             <ol>
-              <li>Follow the dot with your eyes.</li>
+              <li>Focus your gaze on the dot.</li>
               <li>
-                Keep your gaze on the dot until you see the confirmation
-                animation.
+                Keep looking at the dot until the confirmation animation
+                appears.
               </li>
-              <li>Repeat this process for each dot throughout the test.</li>
+              <li>Once confirmed, move your eyes to the next dot.</li>
+              <li>Repeat this process for each dot on the screen.</li>
+              <li>
+                Try to keep your head still and use only your eyes to follow the
+                dots.
+              </li>
             </ol>
           </div>
         </div>

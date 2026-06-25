@@ -13,7 +13,7 @@ export interface HeaderProps {
 
 const Header = ({
   alignment = "left",
-  theme = "light",
+  theme = "contrast",
   title,
   subtext,
   size = "large",
