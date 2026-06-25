@@ -11,7 +11,6 @@ export const BUTTON_THEME = [
   "green",
   "red",
   "yellow",
-  "light",
   "contrast",
 ] as const;
 

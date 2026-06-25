@@ -76,7 +76,7 @@ const Carousel = ({
   };
 
   if (showHelp) {
-    return <HelpScreen theme="contrast" onExit={() => setShowHelp(false)} />;
+    return <HelpScreen onExit={() => setShowHelp(false)} />;
   }
 
   return (

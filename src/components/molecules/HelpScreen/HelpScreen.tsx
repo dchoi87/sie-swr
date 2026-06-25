@@ -9,11 +9,10 @@ import { Header } from "@/components/molecules";
 import styles from "./HelpScreen.module.scss";
 
 export interface HelpScreenProps {
-  theme?: "light" | "contrast";
   onExit?: () => void;
 }
 
-const HelpScreen = ({ theme = "contrast", onExit }: HelpScreenProps) => {
+const HelpScreen = ({ onExit }: HelpScreenProps) => {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleExitEnter = () => {
@@ -28,12 +27,12 @@ const HelpScreen = ({ theme = "contrast", onExit }: HelpScreenProps) => {
   };
 
   return (
-    <div className={classNames(styles.container, styles[theme])}>
+    <div className={classNames(styles.container)}>
       <Button
         iconName="ArrowLeft"
         label="Exit Help"
         iconPos="start"
-        theme={theme}
+        theme="contrast"
         addClassName={styles.button}
         onMouseEnter={handleExitEnter}
         onMouseLeave={handleExitLeave}
@@ -42,7 +41,7 @@ const HelpScreen = ({ theme = "contrast", onExit }: HelpScreenProps) => {
         <Header
           title="How to Calibrate Using Your Eyes"
           separator
-          theme={theme}
+          theme="contrast"
         />
         <div className={styles.grid}>
           <div className={styles.video}>
@@ -51,7 +50,7 @@ const HelpScreen = ({ theme = "contrast", onExit }: HelpScreenProps) => {
             </video>
           </div>
           <div className={styles.copy}>
-            <Header title="Instructions" theme={theme} size="small" />
+            <Header title="Instructions" size="small" />
             <ol>
               <li>
                 Focus your gaze on the <strong>dot</strong>.
