@@ -51,17 +51,20 @@ const HelpScreen = ({ theme = "contrast", onExit }: HelpScreenProps) => {
             </video>
           </div>
           <div className={styles.copy}>
+            <Header title="Instructions" theme={theme} size="small" />
             <ol>
-              <li>Focus your gaze on the dot.</li>
               <li>
-                Keep looking at the dot until the confirmation animation
-                appears.
+                Focus your gaze on the <strong>dot</strong>.
+              </li>
+              <li>
+                Keep looking at the dot{" "}
+                <strong>until the confirmation animation appears</strong>.
               </li>
               <li>Once confirmed, move your eyes to the next dot.</li>
               <li>Repeat this process for each dot on the screen.</li>
               <li>
-                Try to keep your head still and use only your eyes to follow the
-                dots.
+                Try to keep your <strong>head still</strong> and use{" "}
+                <strong>only your eyes</strong> to follow the dots.
               </li>
             </ol>
           </div>

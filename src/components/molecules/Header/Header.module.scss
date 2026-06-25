@@ -30,6 +30,10 @@ h2 {
   &.medium {
     font-size: 32px;
   }
+
+  &.small {
+    font-size: 24px;
+  }
 }
 
 .subtext {
@@ -45,7 +49,7 @@ h2 {
   }
 
   &.separator {
-    border-color: #191919;
+    border-color: #6d6d6d;
   }
 
   .subtext {

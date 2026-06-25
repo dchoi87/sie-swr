@@ -27,6 +27,9 @@
 }
 
 .copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   padding: 32px;
   color: #fff;
   font-family: "Open Sans";
@@ -35,7 +38,8 @@
   ol {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
+    margin: 0;
   }
 }
 
@@ -47,7 +51,7 @@
   display: flex;
 
   video {
-    width: 700px;
+    width: 650px;
     object-fit: cover;
     display: block;
     border-radius: 16px;

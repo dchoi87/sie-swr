@@ -5,7 +5,7 @@ import styles from "./Header.module.scss";
 export interface HeaderProps {
   alignment?: "left" | "center";
   theme?: "light" | "contrast";
-  size?: "medium" | "large";
+  size?: "small" | "medium" | "large";
   title: string;
   subtext?: string;
   separator?: boolean;
