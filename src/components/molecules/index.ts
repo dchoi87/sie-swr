@@ -6,4 +6,3 @@ export { default as Header } from "./Header";
 export { default as HelpScreen } from "./HelpScreen";
 export { default as MedicationsGrid } from "./MedicationsGrid";
 export { default as Selections } from "./Selections";
-export { default as SelectionsGrid } from "./SelectionsGrid";

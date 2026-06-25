@@ -9,12 +9,12 @@ import Selections from "./Selections";
 const meta = {
   title: "Molecules/Selections",
   component: Selections,
-  tags: ["autodocs", "new"],
+  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
   argTypes: {
-    options: {
+    items: {
       table: {
         category: "Grid",
       },

@@ -1,6 +1,7 @@
 export interface SelectionOption {
   title: string;
   subtext: string;
+  type?: string;
 }
 
 export interface SelectionScreen {
@@ -140,10 +141,66 @@ export const timing: SelectionScreen = {
   ],
 };
 
-export const patientHistory: SelectionScreen[] = [
+export const oralMedication: SelectionScreen = {
+  heading: "Are These Medications Up to Date?",
+  directions:
+    "Please review your current medications below and confirm they are correct",
+  items: [
+    {
+      title: "Acetazolamide 250mg",
+      subtext: "Glaucoma / Eye Pressure",
+      type: "oral",
+    },
+    {
+      title: "Prednisone 5mg",
+      subtext: "Eye Inflammation",
+      type: "oral",
+    },
+    {
+      title: "Montelukast 10mg",
+      subtext: "Allergy Symptoms",
+      type: "oral",
+    },
+    {
+      title: "Doxycycline 50mg",
+      subtext: "Blepharitis, rosacea-related eye disease",
+      type: "oral",
+    },
+  ],
+};
+
+export const topicalMedication: SelectionScreen = {
+  heading: "Are These Topical Medications Up to Date?",
+  directions:
+    "Please review your current medications below and confirm they are correct",
+  items: [
+    {
+      title: "Latanoprost 0.005%",
+      subtext: "Glaucoma / High Eye Pressure",
+      type: "eyedrop",
+    },
+    {
+      title: "Timolol 0.25%",
+      subtext: "Glaucoma",
+      type: "eyedrop",
+    },
+    {
+      title: "Prednisolone Acetate 1%",
+      subtext: "Eye Inflammation",
+      type: "eyedrop",
+    },
+  ],
+};
+
+export const chiefComplaintsHpi: SelectionScreen[] = [
   chiefComplaints,
   location,
   quality,
   severity,
   timing,
+];
+
+export const medicationsList: SelectionScreen[] = [
+  oralMedication,
+  topicalMedication,
 ];

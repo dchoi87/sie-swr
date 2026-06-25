@@ -19,7 +19,9 @@ const Radio = () => {
   const handleMouseEnter = () => {
     timerRef.current = setTimeout(() => {
       setSelected(!selected);
-      next();
+      setTimeout(() => {
+        next();
+      }, 300);
       timerRef.current = null;
     }, 2200);
   };

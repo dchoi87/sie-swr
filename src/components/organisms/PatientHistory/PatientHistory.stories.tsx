@@ -6,7 +6,7 @@ import PatientHistory from "./PatientHistory";
 const meta = {
   title: "Organisms/Patient History",
   component: PatientHistory,
-  tags: ["autodocs", "new"],
+  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },

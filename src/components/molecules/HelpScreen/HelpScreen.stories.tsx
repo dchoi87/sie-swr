@@ -5,7 +5,7 @@ import HelpScreen from "./HelpScreen";
 const meta = {
   title: "Molecules/Help Screen",
   component: HelpScreen,
-  tags: ["autodocs", "new"],
+  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },
