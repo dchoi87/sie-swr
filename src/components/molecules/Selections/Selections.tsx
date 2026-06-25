@@ -10,7 +10,7 @@ import styles from "./Selections.module.scss";
 export interface SelectionsProps {
   heading: string;
   directions?: string;
-  options: SelectionOption[];
+  items: SelectionOption[];
   columns?: "one" | "two";
   theme?: "list" | "card";
 }
@@ -18,7 +18,7 @@ export interface SelectionsProps {
 const Selections = ({
   heading,
   directions,
-  options,
+  items,
   columns = "two",
   theme = "card",
 }: SelectionsProps) => (
@@ -30,7 +30,7 @@ const Selections = ({
       separator={true}
     />
     <div className={classNames(styles.grid, styles[columns])}>
-      {options.map((issue, i) => {
+      {items.map((issue, i) => {
         return (
           <div
             key={`selection-${i}`}

@@ -18,7 +18,9 @@ const meta = {
         style={{
           display: "flex",
           justifyContent: "center",
-          padding: "8rem",
+          alignItems: "center",
+          width: "100%",
+          minHeight: "100vh",
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",

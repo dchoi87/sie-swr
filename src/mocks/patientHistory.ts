@@ -6,13 +6,13 @@ export interface SelectionOption {
 export interface SelectionScreen {
   heading: string;
   directions: string;
-  options: SelectionOption[];
+  items: SelectionOption[];
 }
 
 export const chiefComplaints: SelectionScreen = {
   heading: "What eye issues are you experiencing today?",
   directions: "Focus your gaze on the circle to make your selection",
-  options: [
+  items: [
     {
       title: "Vision Change",
       subtext: "Changes in eyesight or visual clarity",
@@ -51,7 +51,7 @@ export const chiefComplaints: SelectionScreen = {
 export const location: SelectionScreen = {
   heading: "Which eye is affected?",
   directions: "Focus your gaze on the circle to make your selection",
-  options: [
+  items: [
     {
       title: "Right Eye",
       subtext: "",
@@ -70,7 +70,7 @@ export const location: SelectionScreen = {
 export const quality: SelectionScreen = {
   heading: "How would you describe the issue?",
   directions: "Focus your gaze on the circle to make your selection",
-  options: [
+  items: [
     {
       title: "Comes and Goes",
       subtext: "Symptoms are not always present",
@@ -97,7 +97,7 @@ export const quality: SelectionScreen = {
 export const severity: SelectionScreen = {
   heading: "How severe is the issue?",
   directions: "Focus your gaze on the circle to make your selection",
-  options: [
+  items: [
     {
       title: "Mild",
       subtext: "Noticeable but not disruptive",
@@ -116,7 +116,7 @@ export const severity: SelectionScreen = {
 export const timing: SelectionScreen = {
   heading: "When did the issue begin?",
   directions: "Focus your gaze on the circle to make your selection",
-  options: [
+  items: [
     {
       title: "Today",
       subtext: "Started within the last 24 hours",

@@ -13,7 +13,7 @@ const PatientHistory = ({}) => {
             <Selections
               heading={topic.heading}
               directions={topic.directions}
-              options={topic.options}
+              items={topic.items}
             />
           </div>
         );

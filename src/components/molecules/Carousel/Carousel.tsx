@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { CarouselContext } from "@/hooks/useCarousel";
 
 import { Button } from "@/components/atoms";
+import { HelpScreen } from "@/components/molecules";
 
 import "./Embla.scss";
 import styles from "./Carousel.module.scss";
@@ -24,6 +25,7 @@ const Carousel = ({
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const slideCount = emblaApi?.slideNodes().length ?? 0;
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [showHelp, setShowHelp] = useState(false);
 
   const next = () => {
     emblaApi?.scrollNext();
@@ -58,7 +60,7 @@ const Carousel = ({
           prev();
           break;
         case "help":
-          console.log("help triggered");
+          setShowHelp(true);
           break;
         default:
           break;
@@ -72,6 +74,10 @@ const Carousel = ({
       timerRef.current = null;
     }
   };
+
+  if (showHelp) {
+    return <HelpScreen theme="contrast" onExit={() => setShowHelp(false)} />;
+  }
 
   return (
     <CarouselContext.Provider value={{ next, prev }}>

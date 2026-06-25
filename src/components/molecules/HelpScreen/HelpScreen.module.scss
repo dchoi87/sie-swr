@@ -22,8 +22,9 @@
 .grid {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding-top: 50px;
+  gap: 24px;
 }
 
 .copy {
@@ -40,6 +41,7 @@
     flex-direction: column;
     gap: 8px;
     margin: 0;
+    padding-left: 24px;
   }
 }
 
@@ -51,11 +53,14 @@
   display: flex;
 
   video {
-    width: 650px;
-    object-fit: cover;
+    width: 100%;
+    max-width: 650px;
+    height: auto;
     display: block;
+    object-fit: cover;
     border-radius: 16px;
     border: 3px solid #efefef;
+    box-sizing: border-box;
   }
 }
 
