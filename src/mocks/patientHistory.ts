@@ -42,8 +42,8 @@ export const chiefComplaints: SelectionScreen = {
       subtext: "Seeing two images instead of one",
     },
     {
-      title: "Light Sensitivity",
-      subtext: "Discomfort when exposed to light",
+      title: "Other",
+      subtext: "",
     },
   ],
 };

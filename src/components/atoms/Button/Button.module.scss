@@ -84,6 +84,17 @@
       animation: complete 1ms linear 2200ms forwards;
     }
   }
+
+  &.light {
+    background: transparent;
+    box-shadow: inset 0 0 0 2.5px #191919;
+    color: #191919;
+  }
+
+  &.contrast {
+    background: transparent;
+    box-shadow: inset 0 0 0 2.5px #fff;
+  }
 }
 
 .ring {

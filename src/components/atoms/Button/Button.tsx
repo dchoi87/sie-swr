@@ -6,7 +6,14 @@ import { Icon } from "@/components/atoms";
 
 import styles from "./Button.module.scss";
 
-export const BUTTON_THEME = ["neutral", "green", "red", "yellow"] as const;
+export const BUTTON_THEME = [
+  "neutral",
+  "green",
+  "red",
+  "yellow",
+  "light",
+  "contrast",
+] as const;
 
 type ButtonTheme = (typeof BUTTON_THEME)[number];
 export interface ButtonProps {

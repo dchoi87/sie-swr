@@ -37,6 +37,23 @@ export const Default: Story = {
   },
 };
 
+export const Light: Story = {
+  args: {
+    ...Default.args,
+    theme: "light",
+  },
+};
+
+export const Contrast: Story = {
+  args: {
+    ...Default.args,
+    theme: "contrast",
+  },
+  globals: {
+    backgrounds: { value: "dark" },
+  },
+};
+
 export const Chevron: Story = {
   args: {
     iconName: "ChevronRight",

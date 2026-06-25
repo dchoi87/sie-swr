@@ -5,6 +5,12 @@
   background: #222222;
 }
 
+.help {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}
+
 .directions {
   max-width: 600px;
   font-family: "PT Sans";
@@ -21,12 +27,11 @@
   span {
     font-weight: 600;
   }
-
-  &.hidden {
-    opacity: 0;
-  }
 }
 
+.hidden {
+  opacity: 0;
+}
 .dot {
   position: absolute;
   border-radius: 50%;

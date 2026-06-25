@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import classNames from "classnames";
 
-import { Dot } from "@/components/atoms";
+import { Dot, Button } from "@/components/atoms";
+import { HelpScreen } from "@/components/molecules";
 
 import styles from "./Calibration.module.scss";
 
@@ -28,9 +29,11 @@ const getCorners = (rect: DOMRect) => {
 const Calibration = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
+  const helpTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [directions, setDirections] = useState(true);
   const [step, setStep] = useState(0);
+  const [showHelp, setShowHelp] = useState(false);
 
   const moveToNextCorner = () => {
     if (!containerRef.current) return;
@@ -57,6 +60,17 @@ const Calibration = () => {
     }
   };
 
+  const handleHelpEnter = () => {
+    helpTimerRef.current = setTimeout(() => setShowHelp(true), 2200);
+  };
+
+  const handleHelpLeave = () => {
+    if (helpTimerRef.current) {
+      clearTimeout(helpTimerRef.current);
+      helpTimerRef.current = null;
+    }
+  };
+
   useEffect(() => {
     // initial center position
     if (containerRef.current) {
@@ -68,8 +82,19 @@ const Calibration = () => {
     }
   }, []);
 
+  if (showHelp) {
+    return <HelpScreen theme="contrast" onExit={() => setShowHelp(false)} />;
+  }
+
   return (
     <div ref={containerRef} className={styles.container}>
+      <Button
+        iconName="QuestionLg"
+        theme="contrast"
+        addClassName={classNames(styles.help, !directions && styles.hidden)}
+        onMouseEnter={handleHelpEnter}
+        onMouseLeave={handleHelpLeave}
+      />
       <div
         className={classNames(styles.directions, !directions && styles.hidden)}
       >
