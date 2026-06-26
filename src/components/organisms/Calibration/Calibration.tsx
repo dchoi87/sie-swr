@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import classNames from "classnames";
 
 import { Dot, Button } from "@/components/atoms";
@@ -30,7 +30,10 @@ const Calibration = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
   const helpTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState(() => ({
+    x: window.innerWidth / 2 - DOT_SIZE / 2,
+    y: window.innerHeight / 2 - DOT_SIZE / 2,
+  }));
   const [directions, setDirections] = useState(true);
   const [step, setStep] = useState(0);
   const [showHelp, setShowHelp] = useState(false);
@@ -75,17 +78,6 @@ const Calibration = () => {
       helpTimerRef.current = null;
     }
   };
-
-  useEffect(() => {
-    // initial center position
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      setPosition({
-        x: rect.width / 2 - DOT_SIZE / 2,
-        y: rect.height / 2 - DOT_SIZE / 2,
-      });
-    }
-  }, []);
 
   if (showHelp) {
     return <HelpScreen onExit={() => setShowHelp(false)} />;
