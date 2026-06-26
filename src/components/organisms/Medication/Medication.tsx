@@ -4,7 +4,7 @@ import { Carousel, MedicationsGrid } from "@/components/molecules";
 
 const Medication = ({}) => {
   return (
-    <Carousel size="lg">
+    <Carousel size="lg" navigationType="confirmation">
       {medicationsList.map((med, index) => {
         return (
           <div key={`selection-${index}`} className="embla-slide">

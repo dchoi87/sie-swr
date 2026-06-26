@@ -40,7 +40,6 @@ export const Default: Story = {
 export const Light: Story = {
   args: {
     ...Default.args,
-    theme: "light",
   },
 };
 

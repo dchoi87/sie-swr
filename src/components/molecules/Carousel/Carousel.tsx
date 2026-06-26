@@ -14,6 +14,7 @@ export interface CarouselProps {
   children?: React.ReactNode;
   size?: "sm" | "md" | "lg";
   navigation?: boolean;
+  navigationType?: "chevron" | "confirmation";
   hideHelp?: number[];
   hideNav?: number[];
 }
@@ -22,6 +23,7 @@ const Carousel = ({
   children,
   size = "sm",
   navigation = true,
+  navigationType = "chevron",
   hideHelp,
   hideNav,
 }: CarouselProps) => {
@@ -115,12 +117,21 @@ const Carousel = ({
         </div>
         {navigation && !hideNav?.includes(selectedIndex) && slideCount > 1 && (
           <div className={classNames(styles.navigation)}>
-            <Button
-              iconName="ChevronLeft"
-              onMouseEnter={() => handleSlideEnter("prev")}
-              onMouseLeave={handleSlideLeave}
-              addClassName={classNames(selectedIndex === 0 && styles.hidden)}
-            />
+            {navigationType === "confirmation" ? (
+              <Button
+                iconName="XLg"
+                theme="red"
+                onMouseEnter={() => handleSlideEnter("next")}
+                onMouseLeave={handleSlideLeave}
+              />
+            ) : (
+              <Button
+                iconName="ChevronLeft"
+                onMouseEnter={() => handleSlideEnter("prev")}
+                onMouseLeave={handleSlideLeave}
+                addClassName={classNames(selectedIndex === 0 && styles.hidden)}
+              />
+            )}
             <div className={styles.dots}>
               {emblaApi?.scrollSnapList().map((_, index) => (
                 <div
@@ -132,14 +143,23 @@ const Carousel = ({
                 ></div>
               ))}
             </div>
-            <Button
-              iconName="ChevronRight"
-              onMouseEnter={() => handleSlideEnter("next")}
-              onMouseLeave={handleSlideLeave}
-              addClassName={classNames(
-                selectedIndex === slideCount - 1 && styles.hidden,
-              )}
-            />
+            {navigationType === "confirmation" ? (
+              <Button
+                iconName="CheckLg"
+                theme="green"
+                onMouseEnter={() => handleSlideEnter("next")}
+                onMouseLeave={handleSlideLeave}
+              />
+            ) : (
+              <Button
+                iconName="ChevronRight"
+                onMouseEnter={() => handleSlideEnter("next")}
+                onMouseLeave={handleSlideLeave}
+                addClassName={classNames(
+                  selectedIndex === slideCount - 1 && styles.hidden,
+                )}
+              />
+            )}
           </div>
         )}
       </div>
