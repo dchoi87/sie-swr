@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import classNames from "classnames";
 
 import { Dot, Button } from "@/components/atoms";
-import { HelpScreen } from "@/components/molecules";
+import { Header, HelpScreen } from "@/components/molecules";
 
 import styles from "./Calibration.module.scss";
 
@@ -100,20 +100,23 @@ const Calibration = () => {
         onMouseEnter={handleHelpEnter}
         onMouseLeave={handleHelpLeave}
       />
-      <div
-        className={classNames(styles.directions, !directions && styles.hidden)}
-      >
-        Please look directly at the <span>dot</span> and keep your
-        <span> gaze steady</span> until it changes
+      <div className={classNames(styles.copy, !directions && styles.hidden)}>
+        <div className={styles.directions}>
+          Please look directly at the <strong>dot</strong> and keep your
+          <strong> gaze steady</strong> until it changes
+        </div>
       </div>
       <div
         className={classNames(
+          styles.copy,
           styles.completion,
           !showCompletion && styles.hidden,
         )}
       >
-        <span>Calibration Successful!</span>
-        <br /> Please follow the directions on the next screen.
+        <Header title="Test Successful!" alignment="center" />
+        <div className={styles.directions}>
+          Please follow the directions on the next screen.
+        </div>
       </div>
       <div
         className={classNames(styles.dot, showCompletion && styles.hidden)}

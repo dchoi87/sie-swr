@@ -11,31 +11,32 @@
   right: 50px;
 }
 
-.directions,
-.completion {
+.copy {
   max-width: 600px;
-  font-family: "PT Sans";
-  font-size: 32px;
-  text-align: center;
-  color: #fff;
   position: absolute;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 1;
   transition: opacity 0.4s ease;
+}
 
-  span {
-    font-weight: 600;
-  }
+.directions {
+  font-family: "PT Sans";
+  font-size: 32px;
+  text-align: center;
+  color: #fff;
 }
 
 .completion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   top: 50%;
-  max-width: 650px;
+  max-width: 800px;
 
-  span {
-    font-size: 48px;
+  .directions {
+    font-size: 24px;
   }
 }
 
