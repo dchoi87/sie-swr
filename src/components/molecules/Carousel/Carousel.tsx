@@ -79,12 +79,23 @@ const Carousel = ({
     }
   };
 
-  if (showHelp) {
-    return <HelpScreen onExit={() => setShowHelp(false)} />;
-  }
+  useEffect(() => {
+    if (!showHelp) return;
+
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = overflow;
+    };
+  }, [showHelp]);
 
   return (
     <CarouselContext.Provider value={{ next, prev }}>
+      {showHelp && (
+        <div className={styles.helpOverlay}>
+          <HelpScreen onExit={() => setShowHelp(false)} />
+        </div>
+      )}
       <div className={classNames(styles.container, styles[size])}>
         <div
           className={classNames(
