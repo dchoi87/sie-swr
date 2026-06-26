@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import classNames from "classnames";
 
 import { Button } from "@/components/atoms";
 import { Header } from "@/components/molecules";
@@ -32,7 +33,7 @@ const ContentBlock = ({ title, copy, cta }: ContentBlockProps) => {
     }
   };
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, cta && styles.reducedSpacing)}>
       <Header title={title} alignment="center" />
       <div className={styles.copy}>{copy}</div>
       {cta && (

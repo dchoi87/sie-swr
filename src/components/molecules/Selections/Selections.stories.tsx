@@ -47,22 +47,23 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const OneColumn: Story = {
+export const TwoColumns: Story = {
   args: {
     ...chiefComplaints,
-    theme: "list",
-    columns: "one",
+    theme: "card",
+    columns: "two",
   },
   globals: {
     backgrounds: { value: "dark" },
   },
 };
 
-export const TwoColumns: Story = {
+export const OneColumn: Story = {
   args: {
-    ...OneColumn.args,
-    theme: "card",
-    columns: "two",
+    ...chiefComplaints,
+    ...TwoColumns.args,
+    theme: "list",
+    columns: "one",
   },
   globals: {
     backgrounds: { value: "dark" },

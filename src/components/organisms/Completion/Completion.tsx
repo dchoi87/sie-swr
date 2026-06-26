@@ -1,22 +1,18 @@
-import { Dialogue, Header } from "@/components/molecules";
+import { Carousel, ContentBlock } from "@/components/molecules";
 
 import styles from "./Completion.module.scss";
 
-export interface CompletionProps {
-  title: string;
-  subtext?: string;
-}
+export interface CompletionProps {}
 
 const Completion = ({}: CompletionProps) => (
-  <Dialogue>
+  <Carousel hideHelp={[0]}>
     <div className={styles.container}>
-      <Header
+      <ContentBlock
         title="You're All Set!"
-        subtext="Please return the device to the technician. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
-        alignment="center"
+        copy="Please return the device to the technician. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
       />
     </div>
-  </Dialogue>
+  </Carousel>
 );
 
 export default Completion;
