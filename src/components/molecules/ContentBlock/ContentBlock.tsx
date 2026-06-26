@@ -2,10 +2,11 @@ import { Button } from "@/components/atoms";
 import { Header } from "@/components/molecules";
 
 import styles from "./ContentBlock.module.scss";
+import React from "react";
 
 export interface ContentBlockProps {
   title: string;
-  copy?: string;
+  copy?: React.ReactNode;
   cta?: string;
 }
 
