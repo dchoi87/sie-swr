@@ -11,7 +11,8 @@
   right: 50px;
 }
 
-.directions {
+.directions,
+.completion {
   max-width: 600px;
   font-family: "PT Sans";
   font-size: 32px;
@@ -26,6 +27,15 @@
 
   span {
     font-weight: 600;
+  }
+}
+
+.completion {
+  top: 50%;
+  max-width: 650px;
+
+  span {
+    font-size: 48px;
   }
 }
 

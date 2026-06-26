@@ -34,6 +34,7 @@ const Calibration = () => {
   const [directions, setDirections] = useState(true);
   const [step, setStep] = useState(0);
   const [showHelp, setShowHelp] = useState(false);
+  const [showCompletion, setShowCompletion] = useState(false);
 
   const moveToNextCorner = () => {
     if (!containerRef.current) return;
@@ -44,13 +45,17 @@ const Calibration = () => {
   };
 
   const handleHover = () => {
-    if (step >= CORNER_COUNT) return;
+    if (step > CORNER_COUNT) return;
 
     timeoutRef.current = window.setTimeout(() => {
       if (directions) {
         setDirections(false);
       }
-      moveToNextCorner();
+      if (step === CORNER_COUNT) {
+        setShowCompletion(true);
+      } else {
+        moveToNextCorner();
+      }
     }, 2200);
   };
 
@@ -102,7 +107,16 @@ const Calibration = () => {
         <span> gaze steady</span> until it changes
       </div>
       <div
-        className={styles.dot}
+        className={classNames(
+          styles.completion,
+          !showCompletion && styles.hidden,
+        )}
+      >
+        <span>Calibration Successful!</span>
+        <br /> Please follow the directions on the next screen.
+      </div>
+      <div
+        className={classNames(styles.dot, showCompletion && styles.hidden)}
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
         style={{
