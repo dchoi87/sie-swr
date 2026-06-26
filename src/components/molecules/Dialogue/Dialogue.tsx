@@ -86,6 +86,7 @@ const Dialogue = ({
 
     const { overflow } = document.body.style;
     document.body.style.overflow = "hidden";
+
     return () => {
       document.body.style.overflow = overflow;
     };
