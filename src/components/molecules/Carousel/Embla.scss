@@ -9,4 +9,9 @@
 .embla-slide {
   flex: 0 0 100%;
   min-width: 0;
+
+  &.align {
+    display: grid;
+    align-items: center;
+  }
 }

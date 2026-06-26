@@ -14,12 +14,16 @@ export interface CarouselProps {
   children?: React.ReactNode;
   size?: "sm" | "md" | "lg";
   navigation?: boolean;
+  hideHelp?: number[];
+  hideNav?: number[];
 }
 
 const Carousel = ({
   children,
   size = "sm",
   navigation = true,
+  hideHelp,
+  hideNav,
 }: CarouselProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ watchDrag: false });
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -82,7 +86,12 @@ const Carousel = ({
   return (
     <CarouselContext.Provider value={{ next, prev }}>
       <div className={classNames(styles.container, styles[size])}>
-        <div className={classNames(styles.help)}>
+        <div
+          className={classNames(
+            styles.help,
+            hideHelp?.includes(selectedIndex) && styles.hidden,
+          )}
+        >
           <Button
             iconName="QuestionLg"
             theme="yellow"
@@ -93,7 +102,7 @@ const Carousel = ({
         <div className="embla-viewport" ref={emblaRef}>
           <div className="embla-container">{children}</div>
         </div>
-        {navigation && slideCount > 1 && (
+        {navigation && !hideNav?.includes(selectedIndex) && slideCount > 1 && (
           <div className={classNames(styles.navigation)}>
             <Button
               iconName="ChevronLeft"

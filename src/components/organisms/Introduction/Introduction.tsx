@@ -2,14 +2,15 @@ import { Carousel, ContentBlock } from "@/components/molecules";
 
 const Introduction = ({}) => {
   return (
-    <Carousel>
-      <div className="embla-slide">
+    <Carousel hideHelp={[0, 1, 3]} hideNav={[0, 3]}>
+      <div className="embla-slide align">
         <ContentBlock
           title="Control with Your Eyes"
           copy="Navigate through the experience by holding your gaze on a button until the confirmation animation completes. Try it now using the button below."
+          cta="Continue"
         />
       </div>
-      <div className="embla-slide">
+      <div className="embla-slide align">
         <ContentBlock
           title="Use Your Voice"
           copy={
@@ -21,7 +22,7 @@ const Introduction = ({}) => {
           }
         />
       </div>
-      <div className="embla-slide">
+      <div className="embla-slide align">
         <ContentBlock
           title="Need Help?"
           copy={
@@ -33,10 +34,11 @@ const Introduction = ({}) => {
           }
         />
       </div>
-      <div className="embla-slide">
+      <div className="embla-slide align">
         <ContentBlock
-          title="Introduction"
+          title="Test Introduction"
           copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          cta="Start"
         />
       </div>
     </Carousel>
