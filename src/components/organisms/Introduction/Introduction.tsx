@@ -1,8 +1,8 @@
-import { Carousel, ContentBlock } from "@/components/molecules";
+import { Dialogue, ContentBlock } from "@/components/molecules";
 
 const Introduction = ({}) => {
   return (
-    <Carousel hideHelp={[0, 1, 3]} hideNav={[0, 3]}>
+    <Dialogue hideHelp={[0, 1, 3]} hideNav={[0, 3]}>
       <div className="embla-slide align">
         <ContentBlock
           title="Control with Your Eyes"
@@ -41,7 +41,7 @@ const Introduction = ({}) => {
           cta="Begin Tests"
         />
       </div>
-    </Carousel>
+    </Dialogue>
   );
 };
 

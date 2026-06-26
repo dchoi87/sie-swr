@@ -1,10 +1,10 @@
 import { chiefComplaintsHpi } from "@/mocks/patientHistory";
 
-import { Carousel, Selections } from "@/components/molecules";
+import { Dialogue, Selections } from "@/components/molecules";
 
 const PatientHistory = ({}) => {
   return (
-    <Carousel size="lg" navigation={false}>
+    <Dialogue size="lg" navigation={false}>
       {chiefComplaintsHpi.map((topic, index) => {
         return (
           <div key={`selection-${index}`} className="embla-slide">
@@ -16,7 +16,7 @@ const PatientHistory = ({}) => {
           </div>
         );
       })}
-    </Carousel>
+    </Dialogue>
   );
 };
 

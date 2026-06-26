@@ -8,9 +8,9 @@ import { Button } from "@/components/atoms";
 import { HelpScreen } from "@/components/molecules";
 
 import "./Embla.scss";
-import styles from "./Carousel.module.scss";
+import styles from "./Dialogue.module.scss";
 
-export interface CarouselProps {
+export interface DialogueProps {
   children?: React.ReactNode;
   size?: "sm" | "md" | "lg";
   navigation?: boolean;
@@ -19,14 +19,14 @@ export interface CarouselProps {
   hideNav?: number[];
 }
 
-const Carousel = ({
+const Dialogue = ({
   children,
   size = "sm",
   navigation = true,
   navigationType = "chevron",
   hideHelp,
   hideNav,
-}: CarouselProps) => {
+}: DialogueProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ watchDrag: false });
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const slideCount = emblaApi?.slideNodes().length ?? 0;
@@ -167,4 +167,4 @@ const Carousel = ({
   );
 };
 
-export default Carousel;
+export default Dialogue;

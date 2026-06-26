@@ -1,4 +1,4 @@
-export { default as Carousel } from "./Carousel";
+export { default as Dialogue } from "./Dialogue";
 export { default as ContentBlock } from "./ContentBlock";
 export { default as Error } from "./Error";
 export { default as Header } from "./Header";

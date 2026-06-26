@@ -1,10 +1,10 @@
 import { medicationsList } from "@/mocks/patientHistory";
 
-import { Carousel, MedicationsGrid } from "@/components/molecules";
+import { Dialogue, MedicationsGrid } from "@/components/molecules";
 
 const Medication = ({}) => {
   return (
-    <Carousel size="lg" navigationType="confirmation">
+    <Dialogue size="lg" navigationType="confirmation">
       {medicationsList.map((med, index) => {
         return (
           <div key={`selection-${index}`} className="embla-slide">
@@ -16,7 +16,7 @@ const Medication = ({}) => {
           </div>
         );
       })}
-    </Carousel>
+    </Dialogue>
   );
 };
 

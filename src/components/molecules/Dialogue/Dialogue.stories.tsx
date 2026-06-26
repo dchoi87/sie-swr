@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import image from "@/assets/waiting-room.png";
 
-import Carousel from "./Carousel";
+import Dialogue from "./Dialogue";
 import { ContentBlock } from "@/components/molecules";
 
 const meta = {
-  title: "Molecules/Carousel",
-  component: Carousel,
+  title: "Molecules/Dialogue",
+  component: Dialogue,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -30,7 +30,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Carousel>;
+} satisfies Meta<typeof Dialogue>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

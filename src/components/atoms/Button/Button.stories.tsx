@@ -37,12 +37,6 @@ export const Default: Story = {
   },
 };
 
-export const Light: Story = {
-  args: {
-    ...Default.args,
-  },
-};
-
 export const Contrast: Story = {
   args: {
     ...Default.args,
