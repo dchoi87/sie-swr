@@ -37,3 +37,21 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {},
 };
+
+export const Medications: Story = {
+  args: { startIndex: 0, endIndex: 1 },
+};
+
+export const ChiefComplaint: Story = {
+  args: {
+    startIndex: 2,
+    endIndex: 2,
+  },
+};
+
+export const HPI: Story = {
+  args: {
+    startIndex: 3,
+    endIndex: 6,
+  },
+};

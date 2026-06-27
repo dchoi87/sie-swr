@@ -5,12 +5,14 @@ export interface SelectionOption {
 }
 
 export interface SelectionScreen {
+  category: string;
   heading: string;
   directions: string;
   items: SelectionOption[];
 }
 
 export const chiefComplaints: SelectionScreen = {
+  category: "complaints",
   heading: "What eye issues are you experiencing today?",
   directions: "Focus your gaze on the circle to make your selection",
   items: [
@@ -50,6 +52,7 @@ export const chiefComplaints: SelectionScreen = {
 };
 
 export const location: SelectionScreen = {
+  category: "hpi",
   heading: "Which eye is affected?",
   directions: "Focus your gaze on the circle to make your selection",
   items: [
@@ -69,6 +72,7 @@ export const location: SelectionScreen = {
 };
 
 export const quality: SelectionScreen = {
+  category: "hpi",
   heading: "How would you describe the issue?",
   directions: "Focus your gaze on the circle to make your selection",
   items: [
@@ -96,6 +100,7 @@ export const quality: SelectionScreen = {
 };
 
 export const severity: SelectionScreen = {
+  category: "hpi",
   heading: "How severe is the issue?",
   directions: "Focus your gaze on the circle to make your selection",
   items: [
@@ -115,6 +120,7 @@ export const severity: SelectionScreen = {
 };
 
 export const timing: SelectionScreen = {
+  category: "hpi",
   heading: "When did the issue begin?",
   directions: "Focus your gaze on the circle to make your selection",
   items: [
@@ -142,6 +148,7 @@ export const timing: SelectionScreen = {
 };
 
 export const oralMedication: SelectionScreen = {
+  category: "medication",
   heading: "Are These Medications Up to Date?",
   directions:
     "Please review your current medications below and confirm they are correct",
@@ -170,6 +177,7 @@ export const oralMedication: SelectionScreen = {
 };
 
 export const topicalMedication: SelectionScreen = {
+  category: "medication",
   heading: "Are These Topical Medications Up to Date?",
   directions:
     "Please review your current medications below and confirm they are correct",
@@ -193,6 +201,13 @@ export const topicalMedication: SelectionScreen = {
 };
 
 export const chiefComplaintsHpi: SelectionScreen[] = [
+  oralMedication,
+  topicalMedication,
+  chiefComplaints,
+  location,
+  quality,
+  severity,
+  timing,
   chiefComplaints,
   location,
   quality,

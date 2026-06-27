@@ -18,6 +18,7 @@ export interface DialogueProps {
   navigationType?: "chevron" | "confirmation";
   hideHelp?: number[];
   hideNav?: number[];
+  startIndex?: number;
 }
 
 const Dialogue = ({
@@ -27,8 +28,12 @@ const Dialogue = ({
   navigationType = "chevron",
   hideHelp,
   hideNav,
+  startIndex = 0,
 }: DialogueProps) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ watchDrag: false });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    watchDrag: false,
+    startIndex,
+  });
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const slideCount = emblaApi?.slideNodes().length ?? 0;
   const [selectedIndex, setSelectedIndex] = useState(0);
