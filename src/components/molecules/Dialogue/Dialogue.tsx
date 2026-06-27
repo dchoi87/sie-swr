@@ -3,6 +3,7 @@ import classNames from "classnames";
 import useEmblaCarousel from "embla-carousel-react";
 
 import { CarouselContext } from "@/hooks/useCarousel";
+import useFlow from "@/hooks/useFlow";
 
 import { Button } from "@/components/atoms";
 import { HelpScreen } from "@/components/molecules";
@@ -32,8 +33,13 @@ const Dialogue = ({
   const slideCount = emblaApi?.slideNodes().length ?? 0;
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [showHelp, setShowHelp] = useState(false);
+  const { next: flowNext } = useFlow();
 
   const next = () => {
+    if (selectedIndex === slideCount - 1) {
+      flowNext();
+      return;
+    }
     emblaApi?.scrollNext();
   };
 
@@ -120,7 +126,9 @@ const Dialogue = ({
           <div className={classNames(styles.navigation)}>
             {navigationType === "confirmation" ? (
               <Button
-                iconName="XLg"
+                label="Decline"
+                iconName="XCircle"
+                iconPos="start"
                 theme="red"
                 onMouseEnter={() => handleSlideEnter("next")}
                 onMouseLeave={handleSlideLeave}
@@ -146,7 +154,9 @@ const Dialogue = ({
             </div>
             {navigationType === "confirmation" ? (
               <Button
-                iconName="CheckLg"
+                label="Confirm"
+                iconName="Check2Circle"
+                iconPos="start"
                 theme="green"
                 onMouseEnter={() => handleSlideEnter("next")}
                 onMouseLeave={handleSlideLeave}

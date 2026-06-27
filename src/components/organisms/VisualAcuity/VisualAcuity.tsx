@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import classNames from "classnames";
 
+import useFlow from "@/hooks/useFlow";
+
 import { Button } from "@/components/atoms";
 import { Header, HelpScreen } from "@/components/molecules";
 
@@ -11,9 +13,23 @@ const VisualAcuity = () => {
   const timeoutRef = useRef<number | null>(null);
   const helpTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const completionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const flowTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [showHelp, setShowHelp] = useState(false);
   const [step, setStep] = useState<"intro" | "test" | "completion">("intro");
   const [countdown, setCountdown] = useState(5);
+  const { next: flowNext } = useFlow();
+
+  useEffect(() => {
+    if (step !== "completion") return;
+
+    flowTimerRef.current = setTimeout(() => flowNext(), 2200);
+
+    return () => {
+      if (flowTimerRef.current) {
+        clearTimeout(flowTimerRef.current);
+      }
+    };
+  }, [step, flowNext]);
 
   useEffect(() => {
     if (step !== "test") return;

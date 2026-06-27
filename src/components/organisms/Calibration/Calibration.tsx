@@ -1,5 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import classNames from "classnames";
+
+import useFlow from "@/hooks/useFlow";
 
 import { Dot, Button } from "@/components/atoms";
 import { Header, HelpScreen } from "@/components/molecules";
@@ -30,6 +32,9 @@ const Calibration = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
   const helpTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const completionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
   const [position, setPosition] = useState(() => ({
     x: window.innerWidth / 2 - DOT_SIZE / 2,
     y: window.innerHeight / 2 - DOT_SIZE / 2,
@@ -38,6 +43,15 @@ const Calibration = () => {
   const [step, setStep] = useState(0);
   const [showHelp, setShowHelp] = useState(false);
   const [showCompletion, setShowCompletion] = useState(false);
+  const { next: flowNext } = useFlow();
+
+  useEffect(() => {
+    return () => {
+      if (completionTimerRef.current) {
+        clearTimeout(completionTimerRef.current);
+      }
+    };
+  }, []);
 
   const moveToNextCorner = () => {
     if (!containerRef.current) return;
@@ -56,6 +70,7 @@ const Calibration = () => {
       }
       if (step === CORNER_COUNT) {
         setShowCompletion(true);
+        completionTimerRef.current = setTimeout(() => flowNext(), 2200);
       } else {
         moveToNextCorner();
       }
