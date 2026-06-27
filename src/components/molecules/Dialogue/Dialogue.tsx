@@ -141,7 +141,7 @@ const Dialogue = ({
                 addClassName={classNames(selectedIndex === 0 && styles.hidden)}
               />
             )}
-            <div className={styles.dots}>
+            {/* <div className={styles.dots}>
               {emblaApi?.scrollSnapList().map((_, index) => (
                 <div
                   key={`dot-${index}`}
@@ -151,7 +151,7 @@ const Dialogue = ({
                   )}
                 ></div>
               ))}
-            </div>
+            </div> */}
             {navigationType === "confirmation" ? (
               <Button
                 label="Confirm"

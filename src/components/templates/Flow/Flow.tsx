@@ -4,12 +4,14 @@ import classNames from "classnames";
 import { FlowContext } from "@/hooks/useFlow";
 
 import {
-  Introduction,
   Calibration,
-  VisualAcuity,
-  PatientHistory,
-  Medication,
   Completion,
+  Introduction,
+  Medication,
+  PatientHistory,
+  Pupillometry,
+  VisualAcuity,
+  VisualField,
 } from "@/components/organisms";
 
 import styles from "./Flow.module.scss";
@@ -22,7 +24,9 @@ type FlowStep = {
 const steps: FlowStep[] = [
   { Component: Calibration, hideDots: true },
   { Component: Introduction },
+  { Component: Pupillometry, hideDots: true },
   { Component: VisualAcuity, hideDots: true },
+  { Component: VisualField, hideDots: true },
   { Component: Medication },
   { Component: PatientHistory },
   { Component: Completion },
