@@ -35,7 +35,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    hideNav: [[2, 11]],
+  },
 };
 
 export const Medications: Story = {
@@ -53,5 +55,6 @@ export const HPI: Story = {
   args: {
     startIndex: 3,
     endIndex: 6,
+    hideNav: [[0, 3]],
   },
 };

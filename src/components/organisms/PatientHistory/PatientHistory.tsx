@@ -2,19 +2,26 @@ import { chiefComplaintsHpi } from "@/mocks/patientHistory";
 
 import { Dialogue, Selections, MedicationsGrid } from "@/components/molecules";
 
+import { type SlideIndex } from "@/components/molecules/Dialogue/Dialogue";
+
 export interface PatientHistory {
   startIndex?: number;
   endIndex?: number;
+  hideNav?: SlideIndex[];
 }
 
-const PatientHistory = ({ startIndex, endIndex }: PatientHistory) => {
+const PatientHistory = ({
+  startIndex,
+  endIndex,
+  hideNav = [[2, 11]],
+}: PatientHistory) => {
   const slides = chiefComplaintsHpi.slice(
     startIndex,
     endIndex !== undefined ? endIndex + 1 : undefined,
   );
 
   return (
-    <Dialogue size="lg" navigationType="confirmation" hideNav={[2, 3]}>
+    <Dialogue size="lg" navigationType="confirmation" hideNav={hideNav}>
       {slides.map((topic, index) => {
         if (topic.category === "medication") {
           return (

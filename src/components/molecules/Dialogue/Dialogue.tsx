@@ -11,13 +11,22 @@ import { HelpScreen } from "@/components/molecules";
 import "./Embla.scss";
 import styles from "./Dialogue.module.scss";
 
+export type SlideIndex = number | [number, number];
+
+const matchesSlideIndex = (ranges: SlideIndex[] | undefined, index: number) =>
+  ranges?.some((range) =>
+    Array.isArray(range)
+      ? index >= range[0] && index <= range[1]
+      : range === index,
+  ) ?? false;
+
 export interface DialogueProps {
   children?: React.ReactNode;
   size?: "sm" | "md" | "lg";
   navigation?: boolean;
   navigationType?: "chevron" | "confirmation";
-  hideHelp?: number[];
-  hideNav?: number[];
+  hideHelp?: SlideIndex[];
+  hideNav?: SlideIndex[];
   startIndex?: number;
 }
 
@@ -114,7 +123,7 @@ const Dialogue = ({
         <div
           className={classNames(
             styles.help,
-            hideHelp?.includes(selectedIndex) && styles.hidden,
+            matchesSlideIndex(hideHelp, selectedIndex) && styles.hidden,
           )}
         >
           <Button
@@ -127,26 +136,30 @@ const Dialogue = ({
         <div className="embla-viewport" ref={emblaRef}>
           <div className="embla-container">{children}</div>
         </div>
-        {navigation && !hideNav?.includes(selectedIndex) && slideCount > 1 && (
-          <div className={classNames(styles.navigation)}>
-            {navigationType === "confirmation" ? (
-              <Button
-                label="Decline"
-                iconName="XCircle"
-                iconPos="start"
-                theme="red"
-                onMouseEnter={() => handleSlideEnter("next")}
-                onMouseLeave={handleSlideLeave}
-              />
-            ) : (
-              <Button
-                iconName="ChevronLeft"
-                onMouseEnter={() => handleSlideEnter("prev")}
-                onMouseLeave={handleSlideLeave}
-                addClassName={classNames(selectedIndex === 0 && styles.hidden)}
-              />
-            )}
-            {/* <div className={styles.dots}>
+        {navigation &&
+          !matchesSlideIndex(hideNav, selectedIndex) &&
+          slideCount > 1 && (
+            <div className={classNames(styles.navigation)}>
+              {navigationType === "confirmation" ? (
+                <Button
+                  label="Decline"
+                  iconName="XCircle"
+                  iconPos="start"
+                  theme="red"
+                  onMouseEnter={() => handleSlideEnter("next")}
+                  onMouseLeave={handleSlideLeave}
+                />
+              ) : (
+                <Button
+                  iconName="ChevronLeft"
+                  onMouseEnter={() => handleSlideEnter("prev")}
+                  onMouseLeave={handleSlideLeave}
+                  addClassName={classNames(
+                    selectedIndex === 0 && styles.hidden,
+                  )}
+                />
+              )}
+              {/* <div className={styles.dots}>
               {emblaApi?.scrollSnapList().map((_, index) => (
                 <div
                   key={`dot-${index}`}
@@ -157,27 +170,27 @@ const Dialogue = ({
                 ></div>
               ))}
             </div> */}
-            {navigationType === "confirmation" ? (
-              <Button
-                label="Confirm"
-                iconName="Check2Circle"
-                iconPos="start"
-                theme="green"
-                onMouseEnter={() => handleSlideEnter("next")}
-                onMouseLeave={handleSlideLeave}
-              />
-            ) : (
-              <Button
-                iconName="ChevronRight"
-                onMouseEnter={() => handleSlideEnter("next")}
-                onMouseLeave={handleSlideLeave}
-                addClassName={classNames(
-                  selectedIndex === slideCount - 1 && styles.hidden,
-                )}
-              />
-            )}
-          </div>
-        )}
+              {navigationType === "confirmation" ? (
+                <Button
+                  label="Confirm"
+                  iconName="Check2Circle"
+                  iconPos="start"
+                  theme="green"
+                  onMouseEnter={() => handleSlideEnter("next")}
+                  onMouseLeave={handleSlideLeave}
+                />
+              ) : (
+                <Button
+                  iconName="ChevronRight"
+                  onMouseEnter={() => handleSlideEnter("next")}
+                  onMouseLeave={handleSlideLeave}
+                  addClassName={classNames(
+                    selectedIndex === slideCount - 1 && styles.hidden,
+                  )}
+                />
+              )}
+            </div>
+          )}
       </div>
     </CarouselContext.Provider>
   );

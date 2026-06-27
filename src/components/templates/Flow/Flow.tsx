@@ -7,7 +7,6 @@ import {
   Calibration,
   Completion,
   Introduction,
-  Medication,
   PatientHistory,
   Pupillometry,
   VisualAcuity,
@@ -27,7 +26,6 @@ const steps: FlowStep[] = [
   { Component: Pupillometry, hideDots: true },
   { Component: VisualAcuity, hideDots: true },
   { Component: VisualField, hideDots: true },
-  { Component: Medication },
   { Component: PatientHistory },
   { Component: Completion },
 ];

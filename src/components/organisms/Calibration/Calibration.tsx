@@ -32,9 +32,7 @@ const Calibration = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
   const helpTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const completionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
-    null,
-  );
+  const completionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [position, setPosition] = useState(() => ({
     x: window.innerWidth / 2 - DOT_SIZE / 2,
     y: window.innerHeight / 2 - DOT_SIZE / 2,
@@ -120,7 +118,7 @@ const Calibration = () => {
           !showCompletion && styles.hidden,
         )}
       >
-        <Header title="Test Successful!" alignment="center" />
+        <Header title="Calibration Successful!" alignment="center" />
         <div className={styles.directions}>
           Please follow the directions on the next screen.
         </div>
