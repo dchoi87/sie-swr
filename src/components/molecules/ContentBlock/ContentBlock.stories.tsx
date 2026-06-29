@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import ContentBlock from "./ContentBlock";
 
+import { CarouselContext } from "@/hooks/useCarousel";
+
 const meta = {
   title: "Molecules/Content Block",
   component: ContentBlock,
@@ -10,6 +12,24 @@ const meta = {
     layout: "centered",
   },
   argTypes: {},
+  decorators: [
+    (Story) => (
+      <CarouselContext.Provider
+        value={{
+          next: () => {},
+          prev: () => {},
+        }}
+      >
+        <div
+          style={{
+            width: "800px",
+          }}
+        >
+          <Story />
+        </div>
+      </CarouselContext.Provider>
+    ),
+  ],
 } satisfies Meta<typeof ContentBlock>;
 
 export default meta;

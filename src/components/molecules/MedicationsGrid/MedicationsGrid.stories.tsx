@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
+import { oralMedication } from "@/mocks/patientHistory";
+
 import MedicationsGrid from "./MedicationsGrid";
 
 const meta = {
@@ -17,43 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    data: [
-      {
-        title: "Latanoprost 0.005%",
-        subtext: "Glaucoma / High Eye Pressure",
-        type: "eyedrop",
-      },
-      {
-        title: "Timolol 0.25%",
-        subtext: "Glaucoma",
-        type: "eyedrop",
-      },
-      {
-        title: "Prednisolone Acetate 1%",
-        subtext: "Eye Inflammation",
-        type: "eyedrop",
-      },
-      {
-        title: "Acetazolamide 250mg",
-        subtext: "Glaucoma / Eye Pressure",
-        type: "oral",
-      },
-      {
-        title: "Prednisone 5mg",
-        subtext: "Eye Inflammation",
-        type: "oral",
-      },
-      {
-        title: "Montelukast 10mg",
-        subtext: "Allergy Symptoms",
-        type: "oral",
-      },
-      {
-        title: "Doxycycline 50mg",
-        subtext: "Blepharitis, rosacea-related eye disease",
-        type: "oral",
-      },
-    ],
+    ...oralMedication,
   },
   globals: {
     backgrounds: { value: "dark" },

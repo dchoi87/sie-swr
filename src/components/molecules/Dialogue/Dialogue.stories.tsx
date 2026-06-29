@@ -18,7 +18,9 @@ const meta = {
         style={{
           display: "flex",
           justifyContent: "center",
-          padding: "8rem",
+          alignItems: "center",
+          width: "100%",
+          minHeight: "100vh",
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -36,33 +38,26 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     children: (
-      <ContentBlock
-        title="Lorem Ipsum Dolor Sit"
-        copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        cta="Continue"
-      />
+      <>
+        <div className="embla-slide">
+          <ContentBlock
+            title="Lorem Ipsum Dolor Sit"
+            copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          />
+        </div>
+        <div className="embla-slide">
+          <ContentBlock
+            title="Consectetur Adipiscing"
+            copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          />
+        </div>
+        <div className="embla-slide">
+          <ContentBlock
+            title="Sed Do Eiusmod"
+            copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          />
+        </div>
+      </>
     ),
-    help: true,
-  },
-};
-
-export const Navigation: Story = {
-  args: {
-    children: (
-      <ContentBlock
-        title="Lorem Ipsum Dolor Sit"
-        copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-      />
-    ),
-    // help: true,
-    navigation: "chevron",
-  },
-};
-
-export const Confirmation: Story = {
-  args: {
-    ...Navigation.args,
-    navigation: "confirmation",
-    help: true,
   },
 };

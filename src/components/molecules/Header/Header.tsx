@@ -4,7 +4,8 @@ import styles from "./Header.module.scss";
 
 export interface HeaderProps {
   alignment?: "left" | "center";
-  size?: "medium" | "large";
+  theme?: "light" | "contrast";
+  size?: "small" | "medium" | "large";
   title: string;
   subtext?: string;
   separator?: boolean;
@@ -12,6 +13,7 @@ export interface HeaderProps {
 
 const Header = ({
   alignment = "left",
+  theme = "contrast",
   title,
   subtext,
   size = "large",
@@ -20,6 +22,7 @@ const Header = ({
   <div
     className={classNames(
       styles.container,
+      styles[theme],
       styles[alignment],
       separator && styles.separator,
     )}

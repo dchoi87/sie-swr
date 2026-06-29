@@ -6,10 +6,17 @@ import { Icon } from "@/components/atoms";
 
 import styles from "./Button.module.scss";
 
-export const BUTTON_THEME = ["neutral", "green", "red", "yellow"] as const;
+export const BUTTON_THEME = [
+  "neutral",
+  "green",
+  "red",
+  "yellow",
+  "contrast",
+] as const;
 
 type ButtonTheme = (typeof BUTTON_THEME)[number];
 export interface ButtonProps {
+  addClassName?: string;
   theme?: ButtonTheme;
   label?: string;
   iconName?: keyof typeof icons;
@@ -23,6 +30,7 @@ const RING_OFFSET = 7;
 const RING_WIDTH = 3;
 
 const Button = ({
+  addClassName,
   theme = "neutral",
   label,
   iconName,
@@ -78,6 +86,7 @@ const Button = ({
         styles[iconPos],
         styles[alignment],
         !label && styles.icon,
+        addClassName,
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
