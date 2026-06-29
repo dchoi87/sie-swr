@@ -96,7 +96,7 @@ const Pupillometry = () => {
       <div
         className={classNames(styles.copy, step !== "intro" && styles.hidden)}
       >
-        <Header title="Visual Field" alignment="center" />
+        <Header title="Pupillometry" alignment="center" />
         <div className={styles.directions}>
           <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing
           elit, sed do eiusmod tempor incididunt ut labore et dolore magna
