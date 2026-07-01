@@ -48,6 +48,7 @@ export const ChiefComplaint: Story = {
   args: {
     startIndex: 2,
     endIndex: 2,
+    hideNav: [0],
   },
 };
 
@@ -56,5 +57,13 @@ export const HPI: Story = {
     startIndex: 3,
     endIndex: 6,
     hideNav: [[0, 3]],
+  },
+};
+
+export const PastHistory: Story = {
+  args: {
+    startIndex: 12,
+    endIndex: 16,
+    hideNav: [],
   },
 };
