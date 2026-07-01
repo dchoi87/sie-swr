@@ -1,27 +1,26 @@
+import classNames from "classnames";
+
 import { type DataOption } from "@/mocks/patientHistory";
 
-import { Icon } from "@/components/atoms";
 import { Header } from "@/components/molecules";
 
-import styles from "./MedicationsGrid.module.scss";
+import styles from "./IssuesGrid.module.scss";
 
-export interface MedicationsGridProps {
+export interface IssuesGridProps {
   items: DataOption[];
   heading: string;
   directions?: string;
 }
 
-const MedicationsGrid = ({ heading, directions, items }: MedicationsGridProps) => (
+const IssuesGrid = ({ heading, directions, items }: IssuesGridProps) => (
   <div className={styles.container}>
     <Header title={heading} subtext={directions} size="medium" separator={true} />
-    <div className={styles.grid}>
+    <div className={classNames(styles.grid, items.length > 10 && styles.threeCol)}>
       {items.map((item, i) => {
         return (
           <div key={`li-${i}`} className={styles.listItem}>
-            <Icon iconName={item.type === "oral" ? "Prescription" : "Eyedropper"} />
             <div className={styles.copy}>
               <div className={styles.title}>{item.title}</div>
-              <div className={styles.subtext}>{item.subtext}</div>
             </div>
           </div>
         );
@@ -30,4 +29,4 @@ const MedicationsGrid = ({ heading, directions, items }: MedicationsGridProps) =
   </div>
 );
 
-export default MedicationsGrid;
+export default IssuesGrid;

@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding: 24px 24px 80px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+
+  &.threeCol {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.listItem {
+  display: flex;
+
+  .copy {
+    font-family: "Open Sans";
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    .subtext {
+      font-size: 14px;
+      font-weight: 400;
+      color: #ccc;
+    }
+  }
+}
