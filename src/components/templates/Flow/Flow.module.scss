@@ -6,4 +6,10 @@
   display: flex;
   gap: 56px;
   z-index: 10;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.hidden {
+  opacity: 0;
 }

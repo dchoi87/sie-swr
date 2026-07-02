@@ -17,7 +17,7 @@ const Pupillometry = () => {
   const [showHelp, setShowHelp] = useState(false);
   const [step, setStep] = useState<"intro" | "test" | "completion">("intro");
   const [countdown, setCountdown] = useState(5);
-  const { next: flowNext } = useFlow();
+  const { next: flowNext, setHideProgress } = useFlow();
 
   useEffect(() => {
     if (step !== "completion") return;
@@ -55,6 +55,7 @@ const Pupillometry = () => {
 
   const handleHover = () => {
     timeoutRef.current = window.setTimeout(() => {
+      setHideProgress(true);
       setStep("test");
     }, 2200);
   };

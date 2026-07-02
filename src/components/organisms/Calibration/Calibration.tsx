@@ -41,7 +41,7 @@ const Calibration = () => {
   const [step, setStep] = useState(0);
   const [showHelp, setShowHelp] = useState(false);
   const [showCompletion, setShowCompletion] = useState(false);
-  const { next: flowNext } = useFlow();
+  const { next: flowNext, setHideProgress } = useFlow();
 
   useEffect(() => {
     return () => {
@@ -65,6 +65,7 @@ const Calibration = () => {
     timeoutRef.current = window.setTimeout(() => {
       if (directions) {
         setDirections(false);
+        setHideProgress(true);
       }
       if (step === CORNER_COUNT) {
         setShowCompletion(true);

@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import classNames from "classnames";
 import * as icons from "react-bootstrap-icons";
 
 import { FlowContext } from "@/hooks/useFlow";
@@ -36,12 +37,16 @@ export const steps: FlowStep[] = [
 
 const Flow = () => {
   const [stepIndex, setStepIndex] = useState(0);
-  const next = () => setStepIndex((index) => Math.min(index + 1, steps.length - 1));
+  const [hideProgress, setHideProgress] = useState(false);
+  const next = () => {
+    setHideProgress(false);
+    setStepIndex((index) => Math.min(index + 1, steps.length - 1));
+  };
   const { Component } = steps[stepIndex];
 
   return (
-    <FlowContext.Provider value={{ next }}>
-      <div className={styles.progress}>
+    <FlowContext.Provider value={{ next, hideProgress, setHideProgress }}>
+      <div className={classNames(styles.progress, hideProgress && styles.hidden)}>
         <ProgressBar steps={steps} currentStep={stepIndex} />
       </div>
       <Component />
