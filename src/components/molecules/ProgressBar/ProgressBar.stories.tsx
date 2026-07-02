@@ -1,4 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import image from "@/assets/waiting-room.png";
+
+import { steps } from "@/components/templates/Flow/Flow";
 
 import ProgressBar from "./ProgressBar";
 
@@ -7,30 +10,56 @@ const meta = {
   component: ProgressBar,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     currentStep: { control: { type: "range", min: 0, max: 6, step: 1 } },
   },
   decorators: [
-    (Story) => (
-      <div
-        style={{
-          width: "800px",
-        }}
-      >
-        <Story />
-      </div>
-    ),
+    (Story, { parameters }) => {
+      const background = parameters.background ?? {
+        color: "#ffffff",
+      };
+
+      return (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            minHeight: "100vh",
+
+            backgroundColor: background.color,
+            backgroundImage: background.image ? `url(${background.image})` : undefined,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <Story />
+        </div>
+      );
+    },
   ],
 } satisfies Meta<typeof ProgressBar>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {},
-  globals: {
-    backgrounds: { value: "dark" },
+export const DarkBackground = {
+  args: { steps },
+  parameters: {
+    background: {
+      color: "#222222",
+    },
+  },
+};
+
+export const ImageBackground: Story = {
+  args: { steps },
+  parameters: {
+    background: {
+      image: image,
+    },
   },
 };

@@ -38,10 +38,7 @@ const Pupillometry = () => {
       setCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(intervalId);
-          completionTimerRef.current = setTimeout(
-            () => setStep("completion"),
-            1000,
-          );
+          completionTimerRef.current = setTimeout(() => setStep("completion"), 1000);
           return 0;
         }
         return prev - 1;
@@ -88,58 +85,33 @@ const Pupillometry = () => {
       <Button
         iconName="QuestionLg"
         theme="contrast"
-        addClassName={classNames(styles.help)}
+        addClassName={classNames(styles.help, step !== "intro" && styles.hidden)}
         onMouseEnter={handleHelpEnter}
         onMouseLeave={handleHelpLeave}
       />
       {/* intro */}
-      <div
-        className={classNames(styles.copy, step !== "intro" && styles.hidden)}
-      >
+      <div className={classNames(styles.copy, step !== "intro" && styles.hidden)}>
         <Header title="Pupillometry" alignment="center" />
         <div className={styles.directions}>
-          <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing
-          elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-          laboris nisi ut aliquip ex ea commodo consequat.
+          <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
         </div>
-        <div
-          className={classNames(styles.trigger)}
-          onMouseEnter={handleHover}
-          onMouseLeave={handleLeave}
-        >
-          <Button
-            label="Begin Test"
-            iconName="ArrowRight"
-            iconPos="end"
-            theme="contrast"
-          />
+        <div className={classNames(styles.trigger)} onMouseEnter={handleHover} onMouseLeave={handleLeave}>
+          <Button label="Begin Test" iconName="ArrowRight" iconPos="end" theme="contrast" />
         </div>
       </div>
 
       {/* test */}
-      <div
-        className={classNames(styles.test, step !== "test" && styles.hidden)}
-      >
-        <Header
-          title="Mock Test in Progress..."
-          alignment="center"
-          size="medium"
-        />
+      <div className={classNames(styles.test, step !== "test" && styles.hidden)}>
+        <Header title="Mock Test in Progress..." alignment="center" size="medium" />
         <div className={styles.countdown}>{countdown}</div>
       </div>
 
       {/* completion */}
-      <div
-        className={classNames(
-          styles.copy,
-          step !== "completion" && styles.hidden,
-        )}
-      >
+      <div className={classNames(styles.copy, step !== "completion" && styles.hidden)}>
         <Header title="Test Successful!" alignment="center" />
-        <div className={styles.directions}>
-          Please follow the directions on the next screen.
-        </div>
+        <div className={styles.directions}>Please follow the directions on the next screen.</div>
       </div>
     </div>
   );

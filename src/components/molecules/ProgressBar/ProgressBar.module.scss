@@ -2,7 +2,7 @@ $circle-size: 32px;
 $line-height: 3px;
 
 .container {
-  width: 100%;
+  width: 850px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -51,12 +51,25 @@ $line-height: 3px;
   }
 }
 
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    color: #fff;
+    width: 20px;
+    height: 20px;
+  }
+}
+
 .label {
   font-family: "PT Sans";
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.25px;
-  color: white;
+  color: #fff;
   text-align: center;
 }

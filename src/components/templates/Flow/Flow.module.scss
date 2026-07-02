@@ -1,4 +1,4 @@
-.dots {
+.progress {
   position: absolute;
   top: 56px;
   left: 50%;
@@ -6,15 +6,4 @@
   display: flex;
   gap: 56px;
   z-index: 10;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 2px solid #eaeaea;
-
-  &.selected {
-    background-color: #eaeaea;
-  }
 }

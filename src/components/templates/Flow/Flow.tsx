@@ -1,7 +1,10 @@
 import { useState } from "react";
-import classNames from "classnames";
+
+import * as icons from "react-bootstrap-icons";
 
 import { FlowContext } from "@/hooks/useFlow";
+
+import { ProgressBar } from "@/components/molecules";
 
 import {
   Calibration,
@@ -15,35 +18,32 @@ import {
 
 import styles from "./Flow.module.scss";
 
-type FlowStep = {
+export type FlowStep = {
   Component: React.ComponentType;
-  hideDots?: boolean;
+  label?: string;
+  icon?: keyof typeof icons;
 };
 
-const steps: FlowStep[] = [
-  { Component: Calibration, hideDots: true },
-  { Component: Introduction },
-  { Component: Pupillometry, hideDots: true },
-  { Component: VisualAcuity, hideDots: true },
-  { Component: VisualField, hideDots: true },
-  { Component: PatientHistory },
-  { Component: Completion },
+export const steps: FlowStep[] = [
+  { Component: Calibration, label: "Calibration", icon: "Bullseye" },
+  { Component: Introduction, label: "Introduction", icon: "Clipboard2Check" },
+  { Component: Pupillometry, label: "Pupillometry", icon: "Eye" },
+  { Component: VisualAcuity, label: "Visual Acuity", icon: "Eyeglasses" },
+  { Component: VisualField, label: "Visual Field", icon: "Arrows" },
+  { Component: PatientHistory, label: "Patient History", icon: "Clipboard2Pulse" },
+  { Component: Completion, label: "Completion", icon: "CheckCircle" },
 ];
 
 const Flow = () => {
   const [stepIndex, setStepIndex] = useState(0);
   const next = () => setStepIndex((index) => Math.min(index + 1, steps.length - 1));
-  const { Component, hideDots } = steps[stepIndex];
+  const { Component } = steps[stepIndex];
 
   return (
     <FlowContext.Provider value={{ next }}>
-      {!hideDots && (
-        <div className={styles.dots}>
-          {steps.map((_, index) => (
-            <div key={`flow-dot-${index}`} className={classNames(styles.dot, index === stepIndex && styles.selected)} />
-          ))}
-        </div>
-      )}
+      <div className={styles.progress}>
+        <ProgressBar steps={steps} currentStep={stepIndex} />
+      </div>
       <Component />
     </FlowContext.Provider>
   );

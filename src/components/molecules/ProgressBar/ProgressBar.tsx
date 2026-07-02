@@ -2,23 +2,17 @@ import classNames from "classnames";
 
 import styles from "./ProgressBar.module.scss";
 
+import { type FlowStep } from "@/components/templates/Flow/Flow";
+
+import { Icon } from "@/components/atoms";
 export interface ProgressBarProps {
+  steps: FlowStep[];
   currentStep?: number;
 }
 
-const steps = [
-  "Calibration",
-  "Instructions",
-  "Pupillometry",
-  "Visual Acuity",
-  "Visual Field",
-  "Patient History",
-  "Complete",
-];
-
-const ProgressBar = ({ currentStep = 0 }: ProgressBarProps) => (
+const ProgressBar = ({ steps, currentStep = 0 }: ProgressBarProps) => (
   <div className={styles.container}>
-    {steps.map((label, index) => (
+    {steps.map((step, index) => (
       <div key={index} className={styles.step}>
         <div className={styles.circleRow}>
           <div
@@ -39,7 +33,10 @@ const ProgressBar = ({ currentStep = 0 }: ProgressBarProps) => (
             })}
           />
         </div>
-        <span className={styles.label}>{label}</span>
+        <div className={styles.copy}>
+          {step.icon && <Icon iconName={step.icon} />}
+          <span className={styles.label}>{step.label}</span>
+        </div>
       </div>
     ))}
   </div>
