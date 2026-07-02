@@ -25,7 +25,9 @@ const ProgressBar = ({ steps, currentStep = 0 }: ProgressBarProps) => (
             className={classNames(styles.circle, {
               [styles.active]: index <= currentStep,
             })}
-          />
+          >
+            {step.icon && <Icon iconName={step.icon} />}
+          </div>
           <div
             className={classNames(styles.connector, {
               [styles.hidden]: index === steps.length - 1,
@@ -33,10 +35,7 @@ const ProgressBar = ({ steps, currentStep = 0 }: ProgressBarProps) => (
             })}
           />
         </div>
-        <div className={styles.copy}>
-          {step.icon && <Icon iconName={step.icon} />}
-          <span className={styles.label}>{step.label}</span>
-        </div>
+        <span className={styles.label}>{step.label}</span>
       </div>
     ))}
   </div>

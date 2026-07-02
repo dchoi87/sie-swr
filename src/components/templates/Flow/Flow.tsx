@@ -32,17 +32,18 @@ export const steps: FlowStep[] = [
   { Component: VisualAcuity, label: "Visual Acuity", icon: "Eyeglasses" },
   { Component: VisualField, label: "Visual Field", icon: "Arrows" },
   { Component: PatientHistory, label: "Patient History", icon: "Clipboard2Pulse" },
-  { Component: Completion, label: "Completion", icon: "CheckCircle" },
+  { Component: Completion, label: "Completion", icon: "Check2" },
 ];
 
 const Flow = () => {
   const [stepIndex, setStepIndex] = useState(0);
   const [hideProgress, setHideProgress] = useState(false);
+  const { Component } = steps[stepIndex];
+
   const next = () => {
     setHideProgress(false);
     setStepIndex((index) => Math.min(index + 1, steps.length - 1));
   };
-  const { Component } = steps[stepIndex];
 
   return (
     <FlowContext.Provider value={{ next, hideProgress, setHideProgress }}>
