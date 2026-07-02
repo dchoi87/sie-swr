@@ -32,8 +32,7 @@ const steps: FlowStep[] = [
 
 const Flow = () => {
   const [stepIndex, setStepIndex] = useState(0);
-  const next = () =>
-    setStepIndex((index) => Math.min(index + 1, steps.length - 1));
+  const next = () => setStepIndex((index) => Math.min(index + 1, steps.length - 1));
   const { Component, hideDots } = steps[stepIndex];
 
   return (
@@ -41,13 +40,7 @@ const Flow = () => {
       {!hideDots && (
         <div className={styles.dots}>
           {steps.map((_, index) => (
-            <div
-              key={`flow-dot-${index}`}
-              className={classNames(
-                styles.dot,
-                index === stepIndex && styles.selected,
-              )}
-            />
+            <div key={`flow-dot-${index}`} className={classNames(styles.dot, index === stepIndex && styles.selected)} />
           ))}
         </div>
       )}
