@@ -29,7 +29,6 @@ const meta = {
             alignItems: "center",
             width: "100%",
             minHeight: "100vh",
-
             backgroundColor: background.color,
             backgroundImage: background.image ? `url(${background.image})` : undefined,
             backgroundSize: "cover",
@@ -47,7 +46,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const DarkBackground = {
-  args: { steps },
+  args: {
+    steps,
+    currentStep: 1,
+  },
   parameters: {
     background: {
       color: "#222222",
@@ -56,7 +58,9 @@ export const DarkBackground = {
 };
 
 export const ImageBackground: Story = {
-  args: { steps },
+  args: {
+    ...DarkBackground.args,
+  },
   parameters: {
     background: {
       image: image,

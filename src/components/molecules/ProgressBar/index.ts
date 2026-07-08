@@ -1,1 +1,1 @@
-export { default } from "./ProgressBar";
+export { default, type FlowStep } from "./ProgressBar";

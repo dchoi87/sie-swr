@@ -1,11 +1,24 @@
 $circle-size: 32px;
 $line-height: 4px;
+$active-color: #98e79a;
 
 .container {
   width: 900px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -100px -340px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 70%);
+    filter: blur(72px);
+    z-index: -1;
+    pointer-events: none;
+  }
 }
 
 .step {
@@ -42,10 +55,10 @@ $line-height: 4px;
   }
 
   &.active {
-    border-color: #4caf50;
+    border-color: $active-color;
 
     svg {
-      color: #4caf50;
+      color: $active-color;
     }
   }
 }
@@ -60,7 +73,7 @@ $line-height: 4px;
   }
 
   &.active {
-    background-color: #4caf50;
+    background-color: $active-color;
   }
 }
 

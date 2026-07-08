@@ -5,5 +5,5 @@ export { default as Header } from "./Header";
 export { default as HelpScreen } from "./HelpScreen";
 export { default as IssuesGrid } from "./IssuesGrid";
 export { default as MedicationsGrid } from "./MedicationsGrid";
-export { default as ProgressBar } from "./ProgressBar";
+export { default as ProgressBar, type FlowStep } from "./ProgressBar";
 export { default as Selections } from "./Selections";

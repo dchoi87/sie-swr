@@ -36,12 +36,17 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    hideNav: [[2, 11]],
+    hideNav: [0, [3, 12]],
   },
 };
 
 export const Medications: Story = {
-  args: { startIndex: 0, endIndex: 1 },
+  args: {
+    startIndex: 0,
+    endIndex: 1,
+    hideNav: [],
+    hideIntro: true,
+  },
 };
 
 export const ChiefComplaint: Story = {
@@ -49,6 +54,7 @@ export const ChiefComplaint: Story = {
     startIndex: 2,
     endIndex: 2,
     hideNav: [0],
+    hideIntro: true,
   },
 };
 
@@ -57,6 +63,7 @@ export const HPI: Story = {
     startIndex: 3,
     endIndex: 6,
     hideNav: [[0, 3]],
+    hideIntro: true,
   },
 };
 
@@ -65,5 +72,6 @@ export const PastHistory: Story = {
     startIndex: 12,
     endIndex: 16,
     hideNav: [],
+    hideIntro: true,
   },
 };

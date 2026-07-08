@@ -1,10 +1,16 @@
 import classNames from "classnames";
+import * as icons from "react-bootstrap-icons";
 
 import styles from "./ProgressBar.module.scss";
 
-import { type FlowStep } from "@/components/templates/Flow/Flow";
-
 import { Icon } from "@/components/atoms";
+
+export type FlowStep = {
+  Component: React.ComponentType;
+  label?: string;
+  icon?: keyof typeof icons;
+};
+
 export interface ProgressBarProps {
   steps: FlowStep[];
   currentStep?: number;

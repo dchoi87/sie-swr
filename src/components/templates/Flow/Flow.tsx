@@ -1,11 +1,10 @@
 import { useState } from "react";
 
 import classNames from "classnames";
-import * as icons from "react-bootstrap-icons";
 
 import { FlowContext } from "@/hooks/useFlow";
 
-import { ProgressBar } from "@/components/molecules";
+import { ProgressBar, type FlowStep } from "@/components/molecules";
 
 import {
   Calibration,
@@ -18,12 +17,6 @@ import {
 } from "@/components/organisms";
 
 import styles from "./Flow.module.scss";
-
-export type FlowStep = {
-  Component: React.ComponentType;
-  label?: string;
-  icon?: keyof typeof icons;
-};
 
 export const steps: FlowStep[] = [
   { Component: Calibration, label: "Calibration", icon: "Bullseye" },
