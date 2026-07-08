@@ -15,9 +15,7 @@ const Introduction = ({}) => {
           title="Use Your Voice"
           copy={
             <span>
-              You can also navigate using your voice.
-              <br /> Try saying <strong>"Next"</strong> to continue to the next
-              dialogue.
+              You can also navigate using your voice. Try saying <strong>"Next"</strong> to continue to the next slide.
             </span>
           }
         />
@@ -27,9 +25,8 @@ const Introduction = ({}) => {
           title="Need Help?"
           copy={
             <span>
-              If you need help at any time, simply gaze at the{" "}
-              <strong>Help</strong> button in the top-right corner or say{" "}
-              <strong>"Help"</strong>. Give it a try now.
+              If you need help at any time, simply gaze at the <strong>Help</strong> button in the top-right corner or
+              say <strong>"Help"</strong>. Give it a try now.
             </span>
           }
         />
