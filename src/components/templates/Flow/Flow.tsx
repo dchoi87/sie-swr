@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import { FlowContext } from "@/hooks/useFlow";
 
-import { ProgressBar, type FlowStep } from "@/components/molecules";
+import { ProgressBar, Toast, type FlowStep } from "@/components/molecules";
 
 import {
   Calibration,
@@ -43,6 +43,12 @@ const Flow = () => {
       <div className={classNames(styles.progress, hideProgress && styles.hidden)}>
         <ProgressBar steps={steps} currentStep={stepIndex} />
       </div>
+      {Component === PatientHistory && (
+        <Toast
+          title="Your Waiting Room is Ready!"
+          copy="Please return the headset. You can complete the rest of your intake on your phone or tablet."
+        />
+      )}
       <Component />
     </FlowContext.Provider>
   );

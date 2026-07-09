@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import image from "@/assets/waiting-room.png";
 
+import { Toast } from "@/components/molecules";
+
 import PatientHistory from "./PatientHistory";
 
 const meta = {
@@ -25,6 +27,10 @@ const meta = {
           backgroundPosition: "center",
         }}
       >
+        <Toast
+          title="Your Waiting Room is Ready!"
+          copy="Please return the headset. You can complete the rest of your intake on your phone or tablet."
+        />
         <Story />
       </div>
     ),
