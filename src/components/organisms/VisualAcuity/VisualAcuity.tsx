@@ -8,15 +8,17 @@ import { Header, HelpScreen } from "@/components/molecules";
 
 import styles from "./VisualAcuity.module.scss";
 
-const VisualAcuity = () => {
+export interface VisualAcuityProps {
+  type?: "isolated" | "snellen";
+}
+
+const VisualAcuity = ({ type = "isolated" }: VisualAcuityProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
   const helpTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const completionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const flowTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [showHelp, setShowHelp] = useState(false);
   const [step, setStep] = useState<"intro" | "test" | "completion">("intro");
-  const [countdown, setCountdown] = useState(5);
   const { next: flowNext, setHideProgress } = useFlow();
 
   useEffect(() => {
@@ -30,28 +32,6 @@ const VisualAcuity = () => {
       }
     };
   }, [step, flowNext]);
-
-  useEffect(() => {
-    if (step !== "test") return;
-
-    const intervalId = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          clearInterval(intervalId);
-          completionTimerRef.current = setTimeout(() => setStep("completion"), 1000);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => {
-      clearInterval(intervalId);
-      if (completionTimerRef.current) {
-        clearTimeout(completionTimerRef.current);
-      }
-    };
-  }, [step]);
 
   const handleHover = () => {
     timeoutRef.current = window.setTimeout(() => {
@@ -82,7 +62,7 @@ const VisualAcuity = () => {
   }
 
   return (
-    <div ref={containerRef} className={styles.container}>
+    <div ref={containerRef} className={classNames(styles.container, step === "test" && styles.transparent)}>
       <Button
         iconName="QuestionLg"
         theme="contrast"
@@ -105,15 +85,53 @@ const VisualAcuity = () => {
 
       {/* test */}
       <div className={classNames(styles.test, step !== "test" && styles.hidden)}>
-        <Header title="Mock Test in Progress..." alignment="center" size="medium" />
-        <div className={styles.countdown}>{countdown}</div>
+        {type === "isolated" ? <IsolatedOptotypeTest onComplete={() => setStep("completion")} /> : <SnellenTest />}
       </div>
 
       {/* completion */}
       <div className={classNames(styles.copy, step !== "completion" && styles.hidden)}>
-        <Header title="Test Successful!" alignment="center" />
+        <Header title="Visual Acuity Complete!" alignment="center" />
         <div className={styles.directions}>Please follow the directions on the next screen.</div>
       </div>
+    </div>
+  );
+};
+
+const OPTOTYPES = ["C", "D", "H", "K", "N", "O", "R", "S", "V", "Z"];
+
+const IsolatedOptotypeTest = ({ onComplete }: { onComplete: () => void }) => {
+  const [letter, setLetter] = useState("A");
+  const [clicks, setClicks] = useState(0);
+
+  const handleClick = () => {
+    const nextClicks = clicks + 1;
+    setClicks(nextClicks);
+
+    if (nextClicks >= 5) {
+      onComplete();
+      return;
+    }
+
+    setLetter((prev) => {
+      let next = prev;
+      while (next === prev) {
+        next = OPTOTYPES[Math.floor(Math.random() * OPTOTYPES.length)];
+      }
+      return next;
+    });
+  };
+
+  return (
+    <div className={styles.board} onClick={handleClick}>
+      <span className={styles.letter}>{letter}</span>
+    </div>
+  );
+};
+
+const SnellenTest = () => {
+  return (
+    <div className={styles.board}>
+      <span className={styles.letter}>Snellen</span>
     </div>
   );
 };
