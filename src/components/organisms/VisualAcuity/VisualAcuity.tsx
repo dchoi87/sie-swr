@@ -85,7 +85,11 @@ const VisualAcuity = ({ type = "isolated" }: VisualAcuityProps) => {
 
       {/* test */}
       <div className={classNames(styles.test, step !== "test" && styles.hidden)}>
-        {type === "isolated" ? <IsolatedOptotypeTest onComplete={() => setStep("completion")} /> : <SnellenTest />}
+        {type === "isolated" ? (
+          <IsolatedOptotypeTest onComplete={() => setStep("completion")} />
+        ) : (
+          <SnellenTest onComplete={() => setStep("completion")} />
+        )}
       </div>
 
       {/* completion */}
@@ -98,6 +102,7 @@ const VisualAcuity = ({ type = "isolated" }: VisualAcuityProps) => {
 };
 
 const OPTOTYPES = ["C", "D", "H", "K", "N", "O", "R", "S", "V", "Z"];
+const OPTOTYPE_SIZES = [96, 72, 56, 44, 34, 26, 20];
 
 const IsolatedOptotypeTest = ({ onComplete }: { onComplete: () => void }) => {
   const [letter, setLetter] = useState("A");
@@ -107,7 +112,7 @@ const IsolatedOptotypeTest = ({ onComplete }: { onComplete: () => void }) => {
     const nextClicks = clicks + 1;
     setClicks(nextClicks);
 
-    if (nextClicks >= 5) {
+    if (nextClicks >= OPTOTYPE_SIZES.length) {
       onComplete();
       return;
     }
@@ -121,17 +126,57 @@ const IsolatedOptotypeTest = ({ onComplete }: { onComplete: () => void }) => {
     });
   };
 
+  const size = OPTOTYPE_SIZES[Math.min(clicks, OPTOTYPE_SIZES.length - 1)];
+
   return (
     <div className={styles.board} onClick={handleClick}>
-      <span className={styles.letter}>{letter}</span>
+      <span className={styles.letter} style={{ fontSize: size }}>
+        {letter}
+      </span>
     </div>
   );
 };
 
-const SnellenTest = () => {
+const SNELLEN_ROWS = [
+  { acuity: "20/200", size: 96, letters: "E" },
+  { acuity: "20/100", size: 72, letters: "FP" },
+  { acuity: "20/70", size: 56, letters: "TOZ" },
+  { acuity: "20/50", size: 44, letters: "LPED" },
+  { acuity: "20/40", size: 34, letters: "PECFD" },
+  { acuity: "20/30", size: 26, letters: "EDFCZP" },
+  { acuity: "20/20", size: 20, letters: "FELOPZD" },
+];
+
+const SnellenTest = ({ onComplete }: { onComplete: () => void }) => {
+  const [activeRow, setActiveRow] = useState(0);
+
+  const handleRowClick = (index: number) => {
+    if (index !== activeRow) return;
+
+    if (index >= SNELLEN_ROWS.length - 1) {
+      onComplete();
+      return;
+    }
+
+    setActiveRow(index + 1);
+  };
+
   return (
     <div className={styles.board}>
-      <span className={styles.letter}>Snellen</span>
+      <div className={styles.chart}>
+        {SNELLEN_ROWS.map((row, index) => (
+          <div
+            key={row.acuity}
+            className={classNames(styles.row, index === activeRow && styles.active)}
+            style={{ fontSize: row.size }}
+            onClick={() => handleRowClick(index)}
+          >
+            {row.letters.split("").map((letter, i) => (
+              <span key={i}>{letter}</span>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
