@@ -1,8 +1,12 @@
 .container {
-  position: relative;
   width: 100vw;
   height: 100vh;
-  background: #222222;
+  background: rgba(60, 60, 60, 0.45);
+  transition: background 2s ease;
+}
+
+.transparent {
+  background: rgba(60, 60, 60, 0);
 }
 
 .help {
@@ -21,7 +25,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 1;
-  transition: opacity 0.4s ease;
+  transition: opacity 2s ease;
 }
 
 .directions {
@@ -47,22 +51,49 @@
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 1;
-  transition: opacity 0.4s ease;
+  transition: opacity 2s ease;
 }
 
-.countdown {
-  font-family: "PT Sans";
-  font-size: 80px;
-  color: #fff;
-  border: 2px dashed #fff;
-  border-radius: 50%;
+.board {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px;
-  height: 120px;
+  border: 5px solid #222;
+  background: #efefef;
+  width: 430px;
+  height: 550px;
+  box-shadow: 0 5px 7px 7px rgba(0, 0, 0, 0.11);
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  font-family: "PT Sans";
+  color: #e5e5e5;
+  line-height: 1;
+}
+
+.row {
+  display: flex;
+  gap: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.active {
+  color: #222;
+  cursor: pointer;
+}
+
+.letter {
+  font-family: "PT Sans";
+  font-size: 24px;
 }
 
 .hidden {
   opacity: 0;
+  pointer-events: none;
 }
