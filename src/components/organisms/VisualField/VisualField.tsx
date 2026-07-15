@@ -111,8 +111,10 @@ const VisualField = () => {
 
       {/* completion */}
       <div className={classNames(styles.copy, step !== "completion" && styles.hidden)}>
-        <Header title="Test Successful!" alignment="center" />
-        <div className={styles.directions}>Please follow the directions on the next screen.</div>
+        <Header title="Visual Field Complete!" alignment="center" />
+        <div className={classNames(styles.directions, styles.center)}>
+          Please follow the directions on the next screen.
+        </div>
       </div>
     </div>
   );
