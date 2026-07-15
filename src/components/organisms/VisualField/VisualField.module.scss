@@ -1,8 +1,12 @@
 .container {
-  position: relative;
   width: 100vw;
   height: 100vh;
-  background: #222222;
+  background: rgba(60, 60, 60, 0.55);
+  transition: background 2s ease;
+}
+
+.darken {
+  background: rgba(34, 34, 34, 1);
 }
 
 .help {

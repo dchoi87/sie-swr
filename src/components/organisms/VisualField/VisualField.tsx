@@ -82,7 +82,7 @@ const VisualField = () => {
   }
 
   return (
-    <div ref={containerRef} className={styles.container}>
+    <div ref={containerRef} className={classNames(styles.container, step === "test" && styles.darken)}>
       <Button
         iconName="QuestionLg"
         theme="contrast"

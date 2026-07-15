@@ -82,7 +82,7 @@ const Pupillometry = () => {
   }
 
   return (
-    <div ref={containerRef} className={styles.container}>
+    <div ref={containerRef} className={classNames(styles.container, step === "test" && styles.whiten)}>
       <Button
         iconName="QuestionLg"
         theme="contrast"
