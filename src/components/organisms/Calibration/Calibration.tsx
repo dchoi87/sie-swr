@@ -3,8 +3,8 @@ import classNames from "classnames";
 
 import useFlow from "@/hooks/useFlow";
 
-import { Dot, Button } from "@/components/atoms";
-import { Header, HelpScreen } from "@/components/molecules";
+import { Dot } from "@/components/atoms";
+import { Header } from "@/components/molecules";
 
 import styles from "./Calibration.module.scss";
 
@@ -31,7 +31,6 @@ const getCorners = (rect: DOMRect) => {
 const Calibration = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
-  const helpTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const completionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [position, setPosition] = useState(() => ({
     x: window.innerWidth / 2 - DOT_SIZE / 2,
@@ -39,7 +38,6 @@ const Calibration = () => {
   }));
   const [directions, setDirections] = useState(true);
   const [step, setStep] = useState(0);
-  const [showHelp, setShowHelp] = useState(false);
   const [showCompletion, setShowCompletion] = useState(false);
   const { next: flowNext, setHideProgress } = useFlow();
 
@@ -82,47 +80,21 @@ const Calibration = () => {
     }
   };
 
-  const handleHelpEnter = () => {
-    helpTimerRef.current = setTimeout(() => setShowHelp(true), 2200);
-  };
-
-  const handleHelpLeave = () => {
-    if (helpTimerRef.current) {
-      clearTimeout(helpTimerRef.current);
-      helpTimerRef.current = null;
-    }
-  };
-
-  if (showHelp) {
-    return <HelpScreen onExit={() => setShowHelp(false)} />;
-  }
-
   return (
     <div ref={containerRef} className={styles.container}>
-      <Button
-        iconName="QuestionLg"
-        theme="contrast"
-        addClassName={classNames(styles.help, !directions && styles.hidden)}
-        onMouseEnter={handleHelpEnter}
-        onMouseLeave={handleHelpLeave}
-      />
       <div className={classNames(styles.copy, !directions && styles.hidden)}>
         <div className={styles.directions}>
-          Please look directly at the <strong>dot</strong> and keep your
-          <strong> gaze steady</strong> until it changes
+          <p>
+            Focus on the <strong>dot</strong> to get started.
+          </p>
+          <p>
+            Keep your <strong> gaze steady</strong> for 2 seconds.
+          </p>
         </div>
       </div>
-      <div
-        className={classNames(
-          styles.copy,
-          styles.completion,
-          !showCompletion && styles.hidden,
-        )}
-      >
+      <div className={classNames(styles.copy, styles.completion, !showCompletion && styles.hidden)}>
         <Header title="Calibration Successful!" alignment="center" />
-        <div className={styles.directions}>
-          Please follow the directions on the next screen.
-        </div>
+        <div className={styles.directions}>Please follow the directions on the next screen.</div>
       </div>
       <div
         className={classNames(styles.dot, showCompletion && styles.hidden)}

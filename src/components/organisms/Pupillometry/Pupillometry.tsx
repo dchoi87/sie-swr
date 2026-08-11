@@ -82,7 +82,10 @@ const Pupillometry = () => {
   }
 
   return (
-    <div ref={containerRef} className={classNames(styles.container, step === "test" && styles.whiten)}>
+    <div
+      ref={containerRef}
+      className={classNames(styles.container, step === "test" && styles.whiten)}
+    >
       <Button
         iconName="QuestionLg"
         theme="contrast"
@@ -92,13 +95,16 @@ const Pupillometry = () => {
       />
       {/* intro */}
       <div className={classNames(styles.copy, step !== "intro" && styles.hidden)}>
-        <Header title="Pupillometry" alignment="center" />
+        <Header title="Let's measure your pupils" alignment="center" />
         <div className={styles.directions}>
-          <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          When the test starts, <strong>hold your gaze for 5 seconds.</strong> Select{" "}
+          <strong>Begin Test</strong> when you are ready.
         </div>
-        <div className={classNames(styles.trigger)} onMouseEnter={handleHover} onMouseLeave={handleLeave}>
+        <div
+          className={classNames(styles.trigger)}
+          onMouseEnter={handleHover}
+          onMouseLeave={handleLeave}
+        >
           <Button label="Begin Test" iconName="ArrowRight" iconPos="end" theme="contrast" />
         </div>
       </div>
@@ -111,7 +117,7 @@ const Pupillometry = () => {
 
       {/* completion */}
       <div className={classNames(styles.copy, step !== "completion" && styles.hidden)}>
-        <Header title="Pupillometry Complete!" alignment="center" />
+        <Header title="Great job!" alignment="center" />
         <div className={classNames(styles.directions, styles.center)}>
           Please follow the directions on the next screen.
         </div>

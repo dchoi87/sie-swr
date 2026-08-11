@@ -11,6 +11,20 @@
   }
 }
 
+.title {
+  font-family: "PT Sans";
+  font-size: 56px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+
+  span {
+    vertical-align: super;
+    font-size: 0.3em;
+    line-height: 0;
+  }
+}
+
 .copy {
   display: flex;
   flex-direction: column;

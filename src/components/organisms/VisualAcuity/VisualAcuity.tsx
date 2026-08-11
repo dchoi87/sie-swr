@@ -62,7 +62,10 @@ const VisualAcuity = ({ type = "isolated" }: VisualAcuityProps) => {
   }
 
   return (
-    <div ref={containerRef} className={classNames(styles.container, step === "test" && styles.transparent)}>
+    <div
+      ref={containerRef}
+      className={classNames(styles.container, step === "test" && styles.transparent)}
+    >
       <Button
         iconName="QuestionLg"
         theme="contrast"
@@ -72,13 +75,16 @@ const VisualAcuity = ({ type = "isolated" }: VisualAcuityProps) => {
       />
       {/* intro */}
       <div className={classNames(styles.copy, step !== "intro" && styles.hidden)}>
-        <Header title="Visual Acuity" alignment="center" />
+        <Header title="Let’s measure your vision" alignment="center" />
         <div className={styles.directions}>
-          <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          One letter will appear at a time in the center. Please clearly say out loud what you see.
+          Take your best guess, or say pass to skip.
         </div>
-        <div className={classNames(styles.trigger)} onMouseEnter={handleHover} onMouseLeave={handleLeave}>
+        <div
+          className={classNames(styles.trigger)}
+          onMouseEnter={handleHover}
+          onMouseLeave={handleLeave}
+        >
           <Button label="Begin Test" iconName="ArrowRight" iconPos="end" theme="contrast" />
         </div>
       </div>
@@ -94,7 +100,7 @@ const VisualAcuity = ({ type = "isolated" }: VisualAcuityProps) => {
 
       {/* completion */}
       <div className={classNames(styles.copy, step !== "completion" && styles.hidden)}>
-        <Header title="Visual Acuity Complete!" alignment="center" />
+        <Header title="Great job!" alignment="center" />
         <div className={classNames(styles.directions, styles.center)}>
           Please follow the directions on the next screen.
         </div>

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Type Check Project",
+    "command": "npm",
+    "args": ["run", "typecheck"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+  },
+  {
+    "label": "Type Check Project Continuously",
+    "command": "npm",
+    "args": ["run", "typecheck:watch"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+  },
+  {
+    "label": "Storybook",
+    "command": "npm",
+    "args": ["run", "storybook"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+  },
+]

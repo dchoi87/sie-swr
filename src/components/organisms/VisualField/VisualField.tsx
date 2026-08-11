@@ -82,7 +82,10 @@ const VisualField = () => {
   }
 
   return (
-    <div ref={containerRef} className={classNames(styles.container, step === "test" && styles.darken)}>
+    <div
+      ref={containerRef}
+      className={classNames(styles.container, step === "test" && styles.darken)}
+    >
       <Button
         iconName="QuestionLg"
         theme="contrast"
@@ -92,13 +95,19 @@ const VisualField = () => {
       />
       {/* intro */}
       <div className={classNames(styles.copy, step !== "intro" && styles.hidden)}>
-        <Header title="Visual Field" alignment="center" />
+        <Header title="Let’s test peripheral vision" alignment="center" />
         <div className={styles.directions}>
-          <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          Keep your eyes on the bright center dot. When another dot appears, look directly at it.
+          Some dots may be very dim — that’s normal. After each dot,{" "}
+          <strong>return your gaze to the center.</strong> If you don’t see a dot, don’t search for
+          it. <br />
+          <br /> Select <strong>Begin Test</strong> when you’re ready.
         </div>
-        <div className={classNames(styles.trigger)} onMouseEnter={handleHover} onMouseLeave={handleLeave}>
+        <div
+          className={classNames(styles.trigger)}
+          onMouseEnter={handleHover}
+          onMouseLeave={handleLeave}
+        >
           <Button label="Begin Test" iconName="ArrowRight" iconPos="end" theme="contrast" />
         </div>
       </div>
@@ -111,7 +120,7 @@ const VisualField = () => {
 
       {/* completion */}
       <div className={classNames(styles.copy, step !== "completion" && styles.hidden)}>
-        <Header title="Visual Field Complete!" alignment="center" />
+        <Header title="Great job!" alignment="center" />
         <div className={classNames(styles.directions, styles.center)}>
           Please follow the directions on the next screen.
         </div>

@@ -14,7 +14,9 @@ import styles from "./Dialogue.module.scss";
 export type SlideIndex = number | [number, number];
 
 const matchesSlideIndex = (ranges: SlideIndex[] | undefined, index: number) =>
-  ranges?.some((range) => (Array.isArray(range) ? index >= range[0] && index <= range[1] : range === index)) ?? false;
+  ranges?.some((range) =>
+    Array.isArray(range) ? index >= range[0] && index <= range[1] : range === index,
+  ) ?? false;
 
 export interface DialogueProps {
   children?: React.ReactNode;
@@ -116,7 +118,12 @@ const Dialogue = ({
         </div>
       )}
       <div className={classNames(styles.container, styles[size])}>
-        <div className={classNames(styles.help, matchesSlideIndex(hideHelp, selectedIndex) && styles.hidden)}>
+        <div
+          className={classNames(
+            styles.help,
+            matchesSlideIndex(hideHelp, selectedIndex) && styles.hidden,
+          )}
+        >
           <Button
             iconName="QuestionLg"
             theme="yellow"
@@ -131,8 +138,7 @@ const Dialogue = ({
           <div className={classNames(styles.navigation)}>
             {navigationType === "confirmation" ? (
               <Button
-                label="Decline"
-                iconName="XCircle"
+                label="Incorrect"
                 iconPos="start"
                 theme="red"
                 onMouseEnter={() => handleSlideEnter("next")}
@@ -159,8 +165,7 @@ const Dialogue = ({
             </div> */}
             {navigationType === "confirmation" ? (
               <Button
-                label="Confirm"
-                iconName="Check2Circle"
+                label="Correct"
                 iconPos="start"
                 theme="green"
                 onMouseEnter={() => handleSlideEnter("next")}

@@ -1,6 +1,12 @@
 import { patientHistoryData } from "@/mocks/patientHistory";
 
-import { ContentBlock, Dialogue, Selections, MedicationsGrid, IssuesGrid } from "@/components/molecules";
+import {
+  ContentBlock,
+  Dialogue,
+  Selections,
+  MedicationsGrid,
+  IssuesGrid,
+} from "@/components/molecules";
 
 import { type SlideIndex } from "@/components/molecules/Dialogue/Dialogue";
 
@@ -11,24 +17,32 @@ export interface PatientHistory {
   hideIntro?: boolean;
 }
 
-const PatientHistory = ({ startIndex, endIndex, hideNav = [0, [3, 12]], hideIntro = false }: PatientHistory) => {
-  const slides = patientHistoryData.slice(startIndex, endIndex !== undefined ? endIndex + 1 : undefined);
+const PatientHistory = ({
+  startIndex,
+  endIndex,
+  hideNav = [0, [3, 12]],
+  hideIntro = false,
+}: PatientHistory) => {
+  const slides = patientHistoryData.slice(
+    startIndex,
+    endIndex !== undefined ? endIndex + 1 : undefined,
+  );
 
   return (
     <Dialogue size="lg" navigationType="confirmation" hideNav={hideNav}>
       {!hideIntro && (
         <div className="embla-slide align">
           <ContentBlock
-            title="Patient History"
+            title="Let’s find out why you’re here today"
             copy={
-              <span>
-                We'll now gather some information about your health and today's visit. You'll be able to confirm your{" "}
-                <strong>medications</strong>, describe your <strong>symptoms</strong>, and review your{" "}
-                <strong>medical, family, and health history</strong>. <br />
+              <>
+                <p>In the following few minutes, we will gather information about your health.</p>
                 <br />
-                If you're unable to finish, don't worry — you can complete the remaining questions later on a{" "}
-                <strong>tablet or mobile device.</strong>
-              </span>
+                <p>
+                  If you’re unable to finish, don’t worry - you can complete the questions on a
+                  mobile device or with the healthcare provider.
+                </p>
+              </>
             }
             cta="Continue"
           />
@@ -38,7 +52,11 @@ const PatientHistory = ({ startIndex, endIndex, hideNav = [0, [3, 12]], hideIntr
         if (topic.category === "medication") {
           return (
             <div key={`selection-${index}`} className="embla-slide">
-              <MedicationsGrid heading={topic.heading} directions={topic.directions} items={topic.items} />
+              <MedicationsGrid
+                heading={topic.heading}
+                directions={topic.directions}
+                items={topic.items}
+              />
             </div>
           );
         }
@@ -46,7 +64,11 @@ const PatientHistory = ({ startIndex, endIndex, hideNav = [0, [3, 12]], hideIntr
         if (topic.category === "patient history") {
           return (
             <div key={`selection-${index}`} className="embla-slide">
-              <IssuesGrid heading={topic.heading} directions={topic.directions} items={topic.items} />
+              <IssuesGrid
+                heading={topic.heading}
+                directions={topic.directions}
+                items={topic.items}
+              />
             </div>
           );
         }

@@ -6,7 +6,7 @@ export interface HeaderProps {
   alignment?: "left" | "center";
   theme?: "light" | "contrast";
   size?: "small" | "medium" | "large";
-  title: string;
+  title: React.ReactNode;
   subtext?: string;
   separator?: boolean;
 }
