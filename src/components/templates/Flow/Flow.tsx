@@ -19,13 +19,13 @@ import {
 import styles from "./Flow.module.scss";
 
 export const steps: FlowStep[] = [
-  { Component: Calibration, label: "Calibration", icon: "Bullseye" },
-  { Component: Introduction, label: "Introduction", icon: "Clipboard2Check" },
-  { Component: Pupillometry, label: "Pupillometry", icon: "Eye" },
-  { Component: VisualAcuity, label: "Visual Acuity", icon: "Eyeglasses" },
-  { Component: VisualField, label: "Visual Field", icon: "Arrows" },
-  { Component: PatientHistory, label: "Patient History", icon: "Clipboard2Pulse" },
-  { Component: Completion, label: "Completion", icon: "Check2" },
+  { Component: Calibration, label: "Calibration" },
+  { Component: Introduction, label: "Introduction" },
+  { Component: Pupillometry, label: "Pupillometry" },
+  { Component: VisualAcuity, label: "Visual Acuity" },
+  { Component: VisualField, label: "Visual Field" },
+  { Component: PatientHistory, label: "Patient History" },
+  { Component: Completion, label: "Completion" },
 ];
 
 const Flow = () => {

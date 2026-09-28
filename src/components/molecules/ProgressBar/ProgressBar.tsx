@@ -1,14 +1,10 @@
 import classNames from "classnames";
-import * as icons from "react-bootstrap-icons";
 
 import styles from "./ProgressBar.module.scss";
-
-import { Icon } from "@/components/atoms";
 
 export type FlowStep = {
   Component: React.ComponentType;
   label?: string;
-  icon?: keyof typeof icons;
 };
 
 export interface ProgressBarProps {
@@ -32,7 +28,7 @@ const ProgressBar = ({ steps, currentStep = 0 }: ProgressBarProps) => (
               [styles.active]: index <= currentStep,
             })}
           >
-            {step.icon && <Icon iconName={step.icon} />}
+            <div className={styles.dot} />
           </div>
           <div
             className={classNames(styles.connector, {
